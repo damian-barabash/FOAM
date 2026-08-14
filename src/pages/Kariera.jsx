@@ -18,7 +18,7 @@ export default function Kariera() {
   return (
     <div className="page-kariera">
       <section className="page-hero brand-field on-brand">
-        <div className="ph-mega ph-right" aria-hidden="true"><img src="/assets/megafon.png" alt="" /></div>
+        <div className="ph-mega ph-right" aria-hidden="true"><FoamArt seed={66} n={330} light shape="arrow" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="kar_hero_eyebrow">kariera</div>
           <h1 className="h-xl rv in" data-edit="kar_hero_h">dodaj swoją bańkę.</h1>

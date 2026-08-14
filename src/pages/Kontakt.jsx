@@ -38,7 +38,7 @@ export default function Kontakt() {
   return (
     <div className="page-kontakt">
       <section className="page-hero brand-field on-brand">
-        <div className="ph-mega ph-left" aria-hidden="true"><img src="/assets/megafon.png" alt="" /></div>
+        <div className="ph-mega ph-left" aria-hidden="true"><FoamArt seed={67} n={330} light shape="speech" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="kon_hero_eyebrow">kontakt</div>
           <h1 className="h-xl rv in" data-edit="kon_hero_h">napisz do nas.</h1>

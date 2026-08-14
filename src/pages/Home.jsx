@@ -4,6 +4,7 @@ import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
 import { fetchRows } from '../lib/api.js';
 import FoamArt from '../components/FoamArt.jsx';
+import CaseBubble from '../components/CaseBubble.jsx';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -170,7 +171,8 @@ export default function Home() {
             </div>
             <div className="post-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
               {cases.map((c, i) => (
-                <a key={c.slug} className={'card post-card rv rv-d' + i} href="/case-studies" onClick={go('/case-studies')}>
+                <CaseBubble key={c.slug} i={i} title={c.title} client={c.client}>
+                <a className={'card post-card'} href="/case-studies" onClick={go('/case-studies')}>
                   <div className="post-cover">{c.cover ? <img src={c.cover} alt="" loading="lazy" /> : null}</div>
                   <div className="post-body">
                     <div className="post-tags"><span className="pill">{c.client}</span></div>
@@ -185,6 +187,7 @@ export default function Home() {
                     )}
                   </div>
                 </a>
+                </CaseBubble>
               ))}
             </div>
           </div>

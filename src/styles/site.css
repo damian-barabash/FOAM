@@ -7,18 +7,24 @@
 .nav.scrolled .nav-in { height: 66px; }
 .nav-logo { position: absolute; left: var(--gutter); top: 50%; transform: translateY(-50%); z-index: 2; transition: left .55s cubic-bezier(.65, 0, .35, 1), transform .55s cubic-bezier(.65, 0, .35, 1); }
 .nav.scrolled .nav-logo { left: 50%; transform: translate(-50%, -50%); }
-.nav-logo img { width: clamp(92px, 9vw, 118px); height: auto; }
-.nav-links { display: flex; gap: 26px; margin-left: auto; transition: opacity .3s ease, transform .4s ease; }
+.nav-logo img { width: clamp(92px, 9vw, 118px); height: auto; transition: width .4s ease; }
+.nav.scrolled .nav-logo img { width: 82px; }
+.nav-links { display: flex; gap: 26px; margin-left: auto; margin-right: 190px; transition: opacity .3s ease, transform .4s ease; }
 .nav.scrolled .nav-links { opacity: 0; transform: translateY(-14px); pointer-events: none; }
 .nav-links a { color: var(--w-70); font-size: 14.5px; font-weight: 600; text-transform: lowercase; position: relative; padding: 4px 0; transition: color .3s ease; }
 .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%; background: #fff; transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
 .nav-links a:hover, .nav-links a.on { color: #fff; }
 .nav-links a:hover::after, .nav-links a.on::after { transform: scaleX(1); }
-.nav-cta { display: flex; align-items: center; gap: 16px; }
+.nav-cta { position: absolute; left: var(--gutter); top: 50%; translate: 0 -50%; transform: translateX(calc(100vw - 2 * var(--gutter) - 100%)); transition: transform .55s cubic-bezier(.65, 0, .35, 1); z-index: 3; display: flex; align-items: center; }
+.nav.scrolled .nav-cta { animation: cta-swap .85s cubic-bezier(.65, 0, .35, 1) both; }
+@keyframes cta-swap {
+  0% { transform: translateX(calc(100vw - 2 * var(--gutter) - 100%)); }
+  40% { transform: translateX(calc(100vw - var(--gutter))); }      /* za prawą krawędź */
+  50% { transform: translateX(calc(-100% - var(--gutter) - 24px)); } /* teleport za lewą */
+  100% { transform: translateX(0); }                                /* wjazd z lewej */
+}
 .nav-raport { padding: 10px 22px; font-size: 14px; }
-.nav.scrolled .nav-raport { animation: cta-fly .55s cubic-bezier(.16, 1, .3, 1) both; }
-@keyframes cta-fly { from { transform: translateX(150px); opacity: 0; } to { transform: none; opacity: 1; } }
-.nav-burger { display: block; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--w-40); position: relative; flex: none; opacity: 0; transform: translateX(-38px); pointer-events: none; transition: opacity .35s ease, transform .5s cubic-bezier(.16, 1, .3, 1); }
+.nav-burger { display: block; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--w-40); position: absolute; right: var(--gutter); top: 50%; translate: 0 -50%; flex: none; opacity: 0; transform: translateX(44px); pointer-events: none; transition: opacity .35s ease, transform .5s cubic-bezier(.16, 1, .3, 1); }
 .nav.scrolled .nav-burger, .nav.menu-open .nav-burger { opacity: 1; transform: none; pointer-events: auto; }
 .nav-burger span { position: absolute; left: 11px; right: 11px; height: 1.6px; background: #fff; transition: transform .3s ease, top .3s ease; }
 .nav-burger span:first-child { top: 15px; }
@@ -223,7 +229,6 @@
 /* ---------- responsywność ---------- */
 @media (max-width: 1020px) {
   .nav-links { display: none; }
-  .nav-cta { margin-left: auto; }
   .nav-burger { opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
   .grid3, .grid4, .post-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-in { grid-template-columns: 1fr; }
@@ -332,6 +337,7 @@
 /* ---------- pienny megafon w hero podstron (naprzemiennie L/P) ---------- */
 .ph-mega { position: absolute; z-index: 1; top: 54%; transform: translateY(-50%); pointer-events: none; }
 .ph-mega img { width: clamp(250px, 30vw, 480px); animation: mega-float 7s ease-in-out infinite; filter: drop-shadow(0 30px 60px rgba(20, 40, 120, .35)); opacity: .95; }
+.ph-mega .foam-art { width: clamp(300px, 33vw, 520px); }
 .ph-right { right: clamp(10px, 5vw, 84px); }
 .ph-left { left: clamp(10px, 5vw, 84px); transform: translateY(-50%) scaleX(-1); }
 @media (max-width: 1020px) {
@@ -339,6 +345,7 @@
   .ph-right { right: -14vw; }
   .ph-left { left: -14vw; }
   .ph-mega img { width: min(62vw, 360px); }
+  .ph-mega .foam-art { width: min(66vw, 380px); }
 }
 
 /* ---------- interaktywna lista wierszy (hover = zalanie gradientem) ---------- */

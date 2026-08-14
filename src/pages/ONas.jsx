@@ -23,7 +23,7 @@ export default function ONas() {
   return (
     <div className="page-onas">
       <section className="page-hero brand-field on-brand">
-        <div className="ph-mega ph-left" aria-hidden="true"><img src="/assets/megafon.png" alt="" /></div>
+        <div className="ph-mega ph-left" aria-hidden="true"><FoamArt seed={65} n={330} light shape="heart" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="on_hero_eyebrow">o nas / zespół</div>
           <h1 className="h-xl rv in" data-edit="on_hero_h">ludzie od łączenia.</h1>

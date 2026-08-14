@@ -24,7 +24,7 @@ export default function Insighty() {
   return (
     <div className="page-insighty">
       <section className="page-hero brand-field on-brand">
-        <div className="ph-mega ph-right" aria-hidden="true"><img src="/assets/megafon.png" alt="" /></div>
+        <div className="ph-mega ph-right" aria-hidden="true"><FoamArt seed={62} n={330} light shape="bulb" /></div>
         <div className="wrap">
           <div className="eyebrow rv in">insighty / punkty widzenia</div>
           <h1 className="h-xl rv in">sygnały, które łowimy.</h1>
