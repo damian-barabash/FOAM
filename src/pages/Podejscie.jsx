@@ -45,15 +45,16 @@ export default function Podejscie() {
               <h2 className="h-lg rv" data-edit="pod_fil_h">na czym stoi piana.</h2>
             </div>
           </div>
-          <div className="grid4">
+          <div className="mosaic m-4">
             {[
               ['połączenia', 'relacje z redakcjami, twórcami i platformami budowane latami. połączenie to najkrótsza droga sygnału.'],
               ['lekkość', 'nie przekrzykujemy internetu. wchodzimy w jego rytm — lekko, naturalnie, we właściwym kontekście.'],
               ['precyzja', 'sygnał bez adresu to szum. planujemy media na danych, nie na przyzwyczajeniach.'],
               ['impakt', 'sukces mierzymy rezonansem: co zostało w głowach, a nie tylko w raportach zasięgowych.'],
             ].map(([h, p], i) => (
-              <div className={'card num-card rv rv-d' + (i % 4)} key={h}>
-                <div className="nc-num" data-edit={`pod_fil${i + 1}_n`}>{'0' + (i + 1)}</div>
+              <div className={'mo-card rv rv-d' + (i % 4) + (i === 2 ? ' mo-brand' : '')} key={h}>
+                <span className="mo-num" data-edit={`pod_fil${i + 1}_n`}>{'0' + (i + 1)}</span>
+                {i === 2 ? <FoamArt seed={43} n={110} light className="mo-foam" /> : null}
                 <h3 data-edit={`pod_fil${i + 1}_h`}>{h}</h3>
                 <p data-edit={`pod_fil${i + 1}_p`}>{p}</p>
               </div>
@@ -73,15 +74,16 @@ export default function Podejscie() {
             </div>
             <p className="lead rv rv-d1" data-edit="pod_way_p">cztery kroki. zawsze w tej kolejności, zawsze razem z tobą.</p>
           </div>
-          <div className="grid4">
+          <div className="mosaic m-4">
             {[
               ['nasłuch', 'zanim cokolwiek powiemy — słuchamy. dane o kategorii, kulturze i konkurencji zbieramy w jeden obraz.'],
               ['kompozycja', 'projektujemy przekaz i dobieramy sygnały: kanały, twórców, formaty, momenty. powstaje partytura kampanii.'],
               ['emisja', 'wypuszczamy sygnały w zaplanowanym rytmie i reagujemy na żywo — feed nie czeka na media plan.'],
               ['rezonans', 'mierzymy, co wybrzmiało. wnioski wracają do partytury — każda kampania uczy następną.'],
             ].map(([h, p], i) => (
-              <div className={'card num-card rv rv-d' + (i % 4)} key={h}>
-                <div className="nc-num" data-edit={`pod_way${i + 1}_n`}>{'0' + (i + 1)}</div>
+              <div className={'mo-card rv rv-d' + (i % 4) + (i === 0 ? ' mo-brand' : '')} key={h}>
+                <span className="mo-num" data-edit={`pod_way${i + 1}_n`}>{'0' + (i + 1)}</span>
+                {i === 0 ? <FoamArt seed={44} n={110} light className="mo-foam" /> : null}
                 <h3 data-edit={`pod_way${i + 1}_h`}>{h}</h3>
                 <p data-edit={`pod_way${i + 1}_p`}>{p}</p>
               </div>

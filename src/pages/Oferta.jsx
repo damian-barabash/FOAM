@@ -34,10 +34,11 @@ export default function Oferta() {
         <span className="mark-word" aria-hidden="true">oferta</span>
         <FoamArt seed={10} n={150} className="foam-deco fd-bl" />
         <div className="wrap">
-          <div className="grid3">
+          <div className="mosaic m-6">
             {SERVICES.map(([h, p], i) => (
-              <div className={'card num-card rv rv-d' + (i % 3)} key={h}>
-                <div className="nc-num" data-edit={`of_s${i + 1}_n`}>{'0' + (i + 1)}</div>
+              <div className={'mo-card rv rv-d' + (i % 3) + ((i === 0 || i === 4) ? ' mo-brand' : '')} key={h}>
+                <span className="mo-num" data-edit={`of_s${i + 1}_n`}>{'0' + (i + 1)}</span>
+                {(i === 0 || i === 4) ? <FoamArt seed={45} n={110} light className="mo-foam" /> : null}
                 <h3 data-edit={`of_s${i + 1}_h`}>{h}</h3>
                 <p data-edit={`of_s${i + 1}_p`}>{p}</p>
               </div>

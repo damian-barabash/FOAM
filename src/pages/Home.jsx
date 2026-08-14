@@ -58,15 +58,16 @@ export default function Home() {
             </div>
             <p className="lead rv rv-d1" data-edit="home_fil_p">pojedyncza bańka jest ulotna. miliony baniek to materiał, z którego budujemy megafon.</p>
           </div>
-          <div className="grid4">
+          <div className="mosaic m-4">
             {[
               ['połączenia', 'znamy ludzi, redakcje i platformy. przekaz płynie tam, gdzie ma płynąć — bo wiemy, kogo połączyć.', 1],
               ['lekkość', 'komunikacja, która nie ciąży. wchodzimy w kulturę feedu naturalnie, bez podnoszenia głosu.', 2],
               ['precyzja', 'każdy sygnał ma adres. dane mówią nam gdzie, kreacja — jak. nic nie leci w próżnię.', 3],
               ['impakt', 'suma sygnałów musi wybrzmieć. rozliczamy się z rezonansu, nie z hałasu.', 4],
             ].map(([h, p], i) => (
-              <div className={'card num-card rv rv-d' + (i % 4)} key={h}>
-                <div className="nc-num" data-edit={`home_fil${i + 1}_n`}>{'0' + (i + 1)}</div>
+              <div className={'mo-card rv rv-d' + (i % 4) + (i === 1 ? ' mo-brand' : '')} key={h}>
+                <span className="mo-num" data-edit={`home_fil${i + 1}_n`}>{'0' + (i + 1)}</span>
+                {i === 1 ? <FoamArt seed={41} n={110} light className="mo-foam" /> : null}
                 <h3 data-edit={`home_fil${i + 1}_h`}>{h}</h3>
                 <p data-edit={`home_fil${i + 1}_p`}>{p}</p>
               </div>
@@ -87,14 +88,15 @@ export default function Home() {
             </div>
             <a className="btn btn-ghost rv" href="/oferta" onClick={go('/oferta')} data-edit="home_usl_cta">zobacz pełną ofertę</a>
           </div>
-          <div className="grid3">
+          <div className="mosaic m-3">
             {[
               ['media & połączenia', 'planowanie i zakup mediów zbudowane na relacjach: digital, social, influencerzy, PR i formaty, których nie ma w cennikach.'],
               ['kampanie social-first', 'koncepty, które rodzą się w feedzie: kreacja, produkcja i dystrybucja pod TikTok, Reels, YouTube i newslettery.'],
               ['dane & rezonans', 'pomiar sygnałów w czasie rzeczywistym: brand lift, attention, sentyment. wiemy, co wybrzmiało — i dlaczego.'],
             ].map(([h, p], i) => (
-              <div className={'card num-card rv rv-d' + i} key={h}>
-                <div className="nc-num" data-edit={`home_usl${i + 1}_n`}>{'0' + (i + 1)}</div>
+              <div className={'mo-card rv rv-d' + i + (i === 0 ? ' mo-brand' : '')} key={h}>
+                <span className="mo-num" data-edit={`home_usl${i + 1}_n`}>{'0' + (i + 1)}</span>
+                {i === 0 ? <FoamArt seed={42} n={110} light className="mo-foam" /> : null}
                 <h3 data-edit={`home_usl${i + 1}_h`}>{h}</h3>
                 <p data-edit={`home_usl${i + 1}_p`}>{p}</p>
               </div>

@@ -83,15 +83,16 @@ export default function ONas() {
         <span className="mark-word mark-left mark-bottom" aria-hidden="true">kultura</span>
         <FoamArt seed={16} n={150} className="foam-deco fd-tr" />
         <div className="wrap">
-          <div className="grid4">
+          <div className="mosaic m-4">
             {[
               ['ciekawość', 'feed zmienia się co tydzień. my razem z nim.'],
               ['rzemiosło', 'małe sygnały wymagają dużej staranności.'],
               ['szczerość', 'mówimy klientom to, co mówią dane. też gdy boli.'],
               ['lekkość', 'dobra robota nie musi być ciężka.'],
             ].map(([h, p], i) => (
-              <div className={'card num-card rv rv-d' + (i % 4)} key={h}>
-                <div className="nc-num" data-edit={`on_v${i + 1}_n`}>{'0' + (i + 1)}</div>
+              <div className={'mo-card rv rv-d' + (i % 4) + (i === 3 ? ' mo-brand' : '')} key={h}>
+                <span className="mo-num" data-edit={`on_v${i + 1}_n`}>{'0' + (i + 1)}</span>
+                {i === 3 ? <FoamArt seed={47} n={110} light className="mo-foam" /> : null}
                 <h3 data-edit={`on_v${i + 1}_h`}>{h}</h3>
                 <p data-edit={`on_v${i + 1}_p`}>{p}</p>
               </div>

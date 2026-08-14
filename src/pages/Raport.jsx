@@ -123,7 +123,7 @@ export default function Raport() {
             </div>
             <FoamArt seed={44} n={280} shape="arrow" className="rv" style={{ width: 150 }} />
           </div>
-          <div className="grid3">
+          <div className="mosaic m-6">
             {[
               ['mapa sygnałów', 'gdzie dziś naprawdę powstaje uwaga: feed, DM-y, podcasty, komentarze.'],
               ['ekonomia lekkości', 'dlaczego formaty poniżej 15 sekund niosą 63% zapamiętania.'],
@@ -132,8 +132,9 @@ export default function Raport() {
               ['pomiar rezonansu', 'brand lift, attention i sentyment w jednym indeksie.'],
               ['plan na 12 miesięcy', 'rekomendacje krok po kroku dla marek każdej wielkości.'],
             ].map(([h, p], i) => (
-              <div className={'card num-card rv rv-d' + (i % 3)} key={h}>
-                <div className="nc-num" data-edit={`rap_toc${i + 1}_n`}>{'0' + (i + 1)}</div>
+              <div className={'mo-card rv rv-d' + (i % 3) + ((i === 1 || i === 5) ? ' mo-brand' : '')} key={h}>
+                <span className="mo-num" data-edit={`rap_toc${i + 1}_n`}>{'0' + (i + 1)}</span>
+                {(i === 1 || i === 5) ? <FoamArt seed={46} n={110} light className="mo-foam" /> : null}
                 <h3 data-edit={`rap_toc${i + 1}_h`}>{h}</h3>
                 <p data-edit={`rap_toc${i + 1}_p`}>{p}</p>
               </div>
