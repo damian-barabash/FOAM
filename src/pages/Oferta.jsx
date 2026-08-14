@@ -23,6 +23,7 @@ export default function Oferta() {
   return (
     <div className="page-oferta">
       <section className="page-hero brand-field on-brand">
+        <div className="ph-mega ph-left" aria-hidden="true"><img src="/assets/megafon.png" alt="" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="of_hero_eyebrow">co robimy / oferta</div>
           <h1 className="h-xl rv in" data-edit="of_hero_h">każdy sygnał w dobrych rękach.</h1>
@@ -32,7 +33,7 @@ export default function Oferta() {
 
       <section className="section">
         <span className="mark-word" aria-hidden="true">oferta</span>
-        <FoamArt seed={10} n={150} className="foam-deco fd-bl" />
+        <FoamArt seed={10} n={150} shape="mega" className="foam-deco fd-bl" />
         <div className="wrap">
           <div className="mosaic m-6">
             {SERVICES.map(([h, p], i) => (
@@ -58,15 +59,17 @@ export default function Oferta() {
               <img src="/assets/photos/life-7.webp" alt="wspólna praca nad kampanią" loading="lazy" data-edit="of_mod_img" data-edit-type="image" />
             </div>
           </div>
-          <div className="grid3" style={{ gridTemplateColumns: '1fr', gap: 12 }}>
+          <div className="rowlist">
             {[
               ['sprint', 'jedna kampania, jeden cel, 6–10 tygodni. szybki dowód, że sygnały potrafią się składać.'],
               ['retainer', 'media i komunikacja marki w trybie ciągłym — z jednym zespołem i jednym dashboardem.'],
               ['orkiestra', 'pełny ekosystem: strategia, media, twórcy, PR i dane pod jedną batutą.'],
             ].map(([h, p], i) => (
-              <div className={'card num-card rv rv-d' + i} key={h} style={{ padding: '22px 26px' }}>
-                <h3 data-edit={`of_mod${i + 1}_h`} style={{ marginBottom: 6 }}>{h}</h3>
+              <div className={'rl-row rv rv-d' + i} key={h}>
+                <span className="rl-num mono">{'0' + (i + 1)}</span>
+                <h3 data-edit={`of_mod${i + 1}_h`}>{h}</h3>
                 <p data-edit={`of_mod${i + 1}_p`}>{p}</p>
+                <span className="rl-arrow" aria-hidden="true">→</span>
               </div>
             ))}
           </div>

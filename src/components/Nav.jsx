@@ -14,6 +14,8 @@ const LINKS = [
 ];
 const PRIMARY = LINKS.slice(0, 4).concat([LINKS[5]]);
 
+// Morfing przy scrollu: na górze pełne menu; niżej logo płynie na środek,
+// linki składają się do burgera (z lewej), CTA wlatuje z prawej.
 export default function Nav() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -21,7 +23,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(scrollY > 30);
+    const onScroll = () => setScrolled(scrollY > 60);
     onScroll();
     addEventListener('scroll', onScroll, { passive: true });
     return () => removeEventListener('scroll', onScroll);
@@ -38,6 +40,14 @@ export default function Nav() {
     <>
       <header className={'nav' + (scrolled ? ' scrolled' : '') + (open ? ' menu-open' : '')}>
         <div className="nav-in">
+          <button
+            className="nav-burger"
+            aria-label={open ? 'zamknij menu' : 'otwórz menu'}
+            aria-expanded={open}
+            onClick={() => setOpen(!open)}
+          >
+            <span /><span />
+          </button>
           <a className="nav-logo" href="/" onClick={go('/')} aria-label="foam.media — start">
             <img src="/assets/logo.svg" alt="FOAM.MEDIA" />
           </a>
@@ -48,14 +58,6 @@ export default function Nav() {
           </nav>
           <div className="nav-cta">
             <a className="btn btn-ghost-brand nav-raport" href="/raport" onClick={go('/raport')}>pobierz raport</a>
-            <button
-              className="nav-burger"
-              aria-label={open ? 'zamknij menu' : 'otwórz menu'}
-              aria-expanded={open}
-              onClick={() => setOpen(!open)}
-            >
-              <span /><span />
-            </button>
           </div>
         </div>
       </header>

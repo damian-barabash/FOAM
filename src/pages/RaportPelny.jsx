@@ -32,6 +32,7 @@ export default function RaportPelny() {
   return (
     <div className="page-raport-pelny">
       <section className="page-hero brand-field on-brand">
+        <div className="ph-mega ph-right" aria-hidden="true"><img src="/assets/megafon.png" alt="" /></div>
         <div className="wrap">
           <div className="eyebrow rv in">raport foam.media · edycja 2026 · wersja online</div>
           <h1 className="h-xl rv in">suma małych sygnałów.</h1>

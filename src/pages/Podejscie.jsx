@@ -14,6 +14,7 @@ export default function Podejscie() {
   return (
     <div className="page-podejscie">
       <section className="page-hero brand-field on-brand">
+        <div className="ph-mega ph-right" aria-hidden="true"><img src="/assets/megafon.png" alt="" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="pod_hero_eyebrow">podejście / manifest</div>
           <h1 className="h-xl rv in" data-edit="pod_hero_h">pojedyncza bańka nie znaczy nic.</h1>
@@ -23,7 +24,7 @@ export default function Podejscie() {
 
       <section className="section">
         <span className="mark-word" aria-hidden="true">manifest</span>
-        <FoamArt seed={8} n={150} className="foam-deco fd-tr" />
+        <FoamArt seed={8} n={150} shape="speech" className="foam-deco fd-tr" />
         <div className="wrap grid2">
           <div>
             <div className="eyebrow rv" data-edit="pod_man_eyebrow">manifest</div>
@@ -34,6 +35,11 @@ export default function Podejscie() {
             osobno są ulotne jak bańki mydlane. połączone — składają się w przekaz, którego nie da się nie usłyszeć.
             naszą pracą jest łączenie. znamy media, ludzi i dane na tyle dobrze, by wiedzieć, które sygnały się przyciągają — i jak zbudować z nich całość, która wybrzmi.
           </div>
+        </div>
+        <div className="wrap photo-strip" style={{ marginTop: 'clamp(48px, 6vw, 100px)' }}>
+          <div className="photo rv"><img src="/assets/photos/life-11.webp" alt="praca nad sygnałami" loading="lazy" data-edit="pod_ph1" data-edit-type="image" /></div>
+          <div className="photo rv rv-d1"><img src="/assets/photos/life-6.webp" alt="zespół foam" loading="lazy" data-edit="pod_ph2" data-edit-type="image" /></div>
+          <div className="photo rv rv-d2"><img src="/assets/photos/life-4.webp" alt="warsztat kreatywny" loading="lazy" data-edit="pod_ph3" data-edit-type="image" /></div>
         </div>
       </section>
 
@@ -65,7 +71,7 @@ export default function Podejscie() {
 
       <section className="section" data-hideable="pod:praca">
         <span className="mark-word mark-left mark-bottom" aria-hidden="true">proces</span>
-        <FoamArt seed={9} n={150} className="foam-deco fd-br" />
+        <FoamArt seed={9} n={150} shape="target" className="foam-deco fd-br" />
         <div className="wrap">
           <div className="sec-head">
             <div>

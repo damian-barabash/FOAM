@@ -14,6 +14,7 @@ export default function Ekosystem() {
   return (
     <div className="page-eko">
       <section className="page-hero brand-field on-brand">
+        <div className="ph-mega ph-right" aria-hidden="true"><img src="/assets/megafon.png" alt="" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="eko_hero_eyebrow">ekosystem</div>
           <h1 className="h-xl rv in" data-edit="eko_hero_h">bańki łączą się w pianę.</h1>
@@ -47,7 +48,7 @@ export default function Ekosystem() {
       </section>
 
       <section className="section section-tint" data-hideable="eko:jak">
-        <FoamArt seed={15} n={150} className="foam-deco fd-tr" />
+        <FoamArt seed={15} n={150} shape="venn" className="foam-deco fd-tr" />
         <div className="wrap grid2">
           <div>
             <div className="eyebrow rv" data-edit="eko_how_eyebrow">co to daje markom</div>
@@ -57,6 +58,9 @@ export default function Ekosystem() {
             wchodzisz jednym briefem, a pracuje dla ciebie całość: zasięgi własne, sieć twórców, relacje z mediami i zespół, który wie, jak to połączyć.
             mniej pośredników, krótsza droga sygnału, lepsza cena uwagi.
           </div>
+        </div>
+        <div className="wrap" style={{ marginTop: 'clamp(44px, 5vw, 80px)' }}>
+          <div className="photo rv"><img src="/assets/photos/life-2.webp" alt="ekosystem foam przy pracy" loading="lazy" data-edit="eko_ph1" data-edit-type="image" style={{ aspectRatio: '21/9' }} /></div>
         </div>
       </section>
 

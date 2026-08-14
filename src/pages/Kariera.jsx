@@ -18,6 +18,7 @@ export default function Kariera() {
   return (
     <div className="page-kariera">
       <section className="page-hero brand-field on-brand">
+        <div className="ph-mega ph-right" aria-hidden="true"><img src="/assets/megafon.png" alt="" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="kar_hero_eyebrow">kariera</div>
           <h1 className="h-xl rv in" data-edit="kar_hero_h">dodaj swoją bańkę.</h1>
@@ -27,7 +28,7 @@ export default function Kariera() {
 
       <section className="section">
         <span className="mark-word" aria-hidden="true">kariera</span>
-        <FoamArt seed={18} n={150} className="foam-deco fd-tr" />
+        <FoamArt seed={18} n={150} shape="arrow" className="foam-deco fd-tr" />
         <div className="wrap">
           <div className="sec-head">
             <div>
@@ -78,16 +79,18 @@ export default function Kariera() {
           <div>
             <div className="eyebrow rv" data-edit="kar_ben_eyebrow">jak się u nas pracuje</div>
             <h2 className="h-lg rv" data-edit="kar_ben_h">lekko, ale na serio.</h2>
-            <div className="grid3" style={{ gridTemplateColumns: '1fr 1fr', gap: 14, marginTop: 34 }}>
+            <div className="rowlist" style={{ marginTop: 34 }}>
               {[
                 ['hybrydowo', 'warszawa + zdalnie. liczy się rezonans, nie obecność.'],
                 ['budżet na eksperymenty', 'w każdym planie mediowym jest linia „przetestujmy coś dziwnego".'],
                 ['sprzęt i opieka', 'macbook, prywatna opieka medyczna, multisport.'],
                 ['realny wpływ', 'mały zespół — twoje sygnały słychać od pierwszego tygodnia.'],
               ].map(([h, p], i) => (
-                <div className={'card num-card rv rv-d' + (i % 2)} key={h} style={{ padding: '24px 24px 26px' }}>
-                  <h3 data-edit={`kar_ben${i + 1}_h`} style={{ fontSize: 17, marginBottom: 6 }}>{h}</h3>
-                  <p data-edit={`kar_ben${i + 1}_p`} style={{ fontSize: 13.5 }}>{p}</p>
+                <div className={'rl-row rv rv-d' + (i % 2)} key={h}>
+                  <span className="rl-num mono">{'0' + (i + 1)}</span>
+                  <h3 data-edit={`kar_ben${i + 1}_h`}>{h}</h3>
+                  <p data-edit={`kar_ben${i + 1}_p`}>{p}</p>
+                  <span className="rl-arrow" aria-hidden="true">→</span>
                 </div>
               ))}
             </div>

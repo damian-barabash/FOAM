@@ -27,7 +27,7 @@ export default function Footer() {
 
   return (
     <footer className="footer brand-field on-brand">
-      <FoamArt seed={20} n={150} light className="foam-deco fd-tr" />
+      <FoamArt seed={20} n={150} light shape="mega" className="foam-deco fd-tr" />
       <div className="wrap">
         <div className="foot-top">
           <div className="foot-news">

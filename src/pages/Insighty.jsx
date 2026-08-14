@@ -24,6 +24,7 @@ export default function Insighty() {
   return (
     <div className="page-insighty">
       <section className="page-hero brand-field on-brand">
+        <div className="ph-mega ph-right" aria-hidden="true"><img src="/assets/megafon.png" alt="" /></div>
         <div className="wrap">
           <div className="eyebrow rv in">insighty / punkty widzenia</div>
           <h1 className="h-xl rv in">sygnały, które łowimy.</h1>
@@ -33,7 +34,7 @@ export default function Insighty() {
 
       <section className="section">
         <span className="mark-word" aria-hidden="true">insighty</span>
-        <FoamArt seed={13} n={150} className="foam-deco fd-bl" />
+        <FoamArt seed={13} n={150} shape="bulb" className="foam-deco fd-bl" />
         <div className="wrap">
           {cats.length > 1 && (
             <div className="post-tags rv in" style={{ marginBottom: 30 }}>

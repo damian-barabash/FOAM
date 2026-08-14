@@ -34,6 +34,22 @@ const SHAPES = {
     inCircle(x, y, 20, 54, 8) || inCircle(x, y, 80, 54, 8) ||
     inTriangle(x, y, 28, 60, 46, 60, 34, 80),
   venn: (x, y) => inCircle(x, y, 36, 50, 25) || inCircle(x, y, 64, 50, 25),
+  play: (x, y) => inTriangle(x, y, 30, 16, 30, 84, 84, 50),
+  bolt: (x, y) =>
+    inTriangle(x, y, 58, 6, 26, 56, 50, 56) ||
+    inTriangle(x, y, 50, 42, 74, 42, 42, 94),
+  heart: (x, y) =>
+    inCircle(x, y, 36, 38, 17) || inCircle(x, y, 64, 38, 17) ||
+    inTriangle(x, y, 22, 46, 78, 46, 50, 88),
+  target: (x, y) => {
+    const d = (x - 50) ** 2 + (y - 50) ** 2;
+    return (d <= 32 * 32 && d >= 20 * 20) || d <= 9 * 9;
+  },
+  mega: (x, y) =>
+    inTriangle(x, y, 30, 42, 80, 16, 80, 84) ||
+    inTriangle(x, y, 30, 42, 80, 84, 30, 58) ||
+    inRect(x, y, 34, 58, 48, 82),
+  bulb: (x, y) => inCircle(x, y, 50, 40, 23) || inRect(x, y, 42, 62, 58, 78),
 };
 
 export default function FoamArt({ seed = 7, n = 220, className = '', style, light = false, shape = 'cloud' }) {

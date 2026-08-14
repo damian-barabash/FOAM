@@ -23,6 +23,7 @@ export default function ONas() {
   return (
     <div className="page-onas">
       <section className="page-hero brand-field on-brand">
+        <div className="ph-mega ph-left" aria-hidden="true"><img src="/assets/megafon.png" alt="" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="on_hero_eyebrow">o nas / zespół</div>
           <h1 className="h-xl rv in" data-edit="on_hero_h">ludzie od łączenia.</h1>
@@ -81,7 +82,7 @@ export default function ONas() {
 
       <section className="section" data-hideable="on:wartosci">
         <span className="mark-word mark-left mark-bottom" aria-hidden="true">kultura</span>
-        <FoamArt seed={16} n={150} className="foam-deco fd-tr" />
+        <FoamArt seed={16} n={150} shape="heart" className="foam-deco fd-tr" />
         <div className="wrap">
           <div className="mosaic m-4">
             {[

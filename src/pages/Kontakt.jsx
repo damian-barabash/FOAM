@@ -38,6 +38,7 @@ export default function Kontakt() {
   return (
     <div className="page-kontakt">
       <section className="page-hero brand-field on-brand">
+        <div className="ph-mega ph-left" aria-hidden="true"><img src="/assets/megafon.png" alt="" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="kon_hero_eyebrow">kontakt</div>
           <h1 className="h-xl rv in" data-edit="kon_hero_h">napisz do nas.</h1>
@@ -90,6 +91,7 @@ export default function Kontakt() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <div className="photo rv rv-d1"><img src="/assets/photos/life-12.webp" alt="foam — zawsze przy kawie" loading="lazy" data-edit="kon_ph1" data-edit-type="image" /></div>
             <div className="card rv rv-d1" style={{ padding: '26px 28px' }}>
               <div className="eyebrow" data-edit="kon_d1_h">napisz wprost</div>
               <a href="mailto:info@foam.media" className="h-md" style={{ fontFamily: 'var(--font-display)', fontWeight: 600, letterSpacing: '-0.04em' }} data-edit="kon_d1_mail">info@foam.media</a>
