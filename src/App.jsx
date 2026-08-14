@@ -59,8 +59,13 @@ function usePageFx(pathname) {
     const arm = (el) => {
       el.dataset.rvArmed = '1';
       if (el.closest('.adm')) { el.classList.add('in'); return; } // panel: bez teatru
+      // ukrycie MUSI być natychmiastowe (bez transition) — inaczej przy
+      // odświeżeniu strony gra "animacja chowania" na elementach z gotowym .in
+      el.classList.add('rv-snap');
       if (el.matches('h1, h2')) splitWords(el);
       el.classList.remove('in');
+      void el.offsetWidth; // reflow: stan ukryty aplikuje się od razu
+      el.classList.remove('rv-snap');
       io.observe(el);
     };
     const scan = () => document.querySelectorAll('.rv:not([data-rv-armed])').forEach(arm);
