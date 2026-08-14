@@ -45,6 +45,7 @@ export default function Kontakt() {
       </section>
 
       <section className="section">
+        <span className="mark-word" aria-hidden="true">halo</span>
         <div className="wrap grid2" style={{ alignItems: 'flex-start' }}>
           <div className="card raport-form rv">
             {state === 'done' ? (

@@ -25,6 +25,7 @@ export default function Kariera() {
       </section>
 
       <section className="section">
+        <span className="mark-word" aria-hidden="true">kariera</span>
         <div className="wrap">
           <div className="sec-head">
             <div>
@@ -64,6 +65,31 @@ export default function Kariera() {
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      <section className="section section-tint" data-hideable="kar:benefity">
+        <div className="wrap grid2" style={{ alignItems: 'stretch' }}>
+          <div className="photo rv">
+            <img src="/assets/photos/life-1.webp" alt="zespół foam przy pracy" loading="lazy" data-edit="kar_ben_img" data-edit-type="image" style={{ height: '100%' }} />
+          </div>
+          <div>
+            <div className="eyebrow rv" data-edit="kar_ben_eyebrow">jak się u nas pracuje</div>
+            <h2 className="h-lg rv" data-edit="kar_ben_h">lekko, ale na serio.</h2>
+            <div className="grid3" style={{ gridTemplateColumns: '1fr 1fr', gap: 14, marginTop: 34 }}>
+              {[
+                ['hybrydowo', 'warszawa + zdalnie. liczy się rezonans, nie obecność.'],
+                ['budżet na eksperymenty', 'w każdym planie mediowym jest linia „przetestujmy coś dziwnego".'],
+                ['sprzęt i opieka', 'macbook, prywatna opieka medyczna, multisport.'],
+                ['realny wpływ', 'mały zespół — twoje sygnały słychać od pierwszego tygodnia.'],
+              ].map(([h, p], i) => (
+                <div className={'card num-card rv rv-d' + (i % 2)} key={h} style={{ padding: '24px 24px 26px' }}>
+                  <h3 data-edit={`kar_ben${i + 1}_h`} style={{ fontSize: 17, marginBottom: 6 }}>{h}</h3>
+                  <p data-edit={`kar_ben${i + 1}_p`} style={{ fontSize: 13.5 }}>{p}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

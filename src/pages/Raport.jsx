@@ -88,6 +88,7 @@ export default function Raport() {
       </section>
 
       <section className="section">
+        <span className="mark-word" aria-hidden="true">dane</span>
         <div className="wrap">
           <div className="sec-head">
             <div>
@@ -112,13 +113,14 @@ export default function Raport() {
       </section>
 
       <section className="section section-tint" data-hideable="rap:spis">
+        <span className="mark-word mark-left mark-bottom" aria-hidden="true">raport</span>
         <div className="wrap">
           <div className="sec-head">
             <div>
               <div className="eyebrow rv" data-edit="rap_toc_eyebrow">w środku</div>
               <h2 className="h-lg rv" data-edit="rap_toc_h">sześć rozdziałów, zero lania wody.</h2>
             </div>
-            <FoamArt seed={44} n={8} className="rv" style={{ width: 120 }} />
+            <FoamArt seed={44} n={280} shape="arrow" className="rv" style={{ width: 150 }} />
           </div>
           <div className="grid3">
             {[

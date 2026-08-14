@@ -24,6 +24,7 @@ export default function CaseStudies() {
       </section>
 
       <section className="section">
+        <span className="mark-word" aria-hidden="true">case</span>
         <div className="wrap">
           {items === null ? (
             <div className="mono" style={{ color: 'var(--ink-3)' }}>ładowanie…</div>

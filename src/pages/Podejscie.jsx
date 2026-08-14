@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
-import FoamArt from '../components/FoamArt.jsx';
 
 export default function Podejscie() {
   const navigate = useNavigate();
@@ -22,6 +21,7 @@ export default function Podejscie() {
       </section>
 
       <section className="section">
+        <span className="mark-word" aria-hidden="true">manifest</span>
         <div className="wrap grid2">
           <div>
             <div className="eyebrow rv" data-edit="pod_man_eyebrow">manifest</div>
@@ -51,7 +51,6 @@ export default function Podejscie() {
               ['impakt', 'sukces mierzymy rezonansem: co zostało w głowach, a nie tylko w raportach zasięgowych.'],
             ].map(([h, p], i) => (
               <div className={'card num-card rv rv-d' + (i % 4)} key={h}>
-                <FoamArt seed={i + 21} n={5} className="nc-bubble" />
                 <div className="nc-num" data-edit={`pod_fil${i + 1}_n`}>{'0' + (i + 1)}</div>
                 <h3 data-edit={`pod_fil${i + 1}_h`}>{h}</h3>
                 <p data-edit={`pod_fil${i + 1}_p`}>{p}</p>
@@ -62,6 +61,7 @@ export default function Podejscie() {
       </section>
 
       <section className="section" data-hideable="pod:praca">
+        <span className="mark-word mark-left mark-bottom" aria-hidden="true">proces</span>
         <div className="wrap">
           <div className="sec-head">
             <div>

@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { fetchRows } from '../lib/api.js';
+import FoamArt from '../components/FoamArt.jsx';
 
 export default function Insighty() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ export default function Insighty() {
       </section>
 
       <section className="section">
+        <span className="mark-word" aria-hidden="true">insighty</span>
         <div className="wrap">
           {cats.length > 1 && (
             <div className="post-tags rv in" style={{ marginBottom: 30 }}>
@@ -67,6 +69,20 @@ export default function Insighty() {
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      <section className="band brand-field on-brand">
+        <div className="wrap grid2">
+          <div>
+            <div className="eyebrow rv">newsletter</div>
+            <h2 className="h-lg rv">takie sygnały prosto na skrzynkę?</h2>
+            <p className="lead rv rv-d1">zapisz się do „the connections" — krótki przegląd tego, co naprawdę wybrzmiało w mediach. bez szumu, raz na jakiś czas.</p>
+            <div className="hero-ctas rv rv-d2">
+              <button className="btn btn-white" onClick={() => document.querySelector('.foot-news')?.scrollIntoView({ behavior: 'smooth' })}>zapisz się niżej ↓</button>
+            </div>
+          </div>
+          <FoamArt seed={23} n={300} light shape="speech" className="rv rv-d1" />
         </div>
       </section>
     </div>

@@ -47,6 +47,8 @@ export default function Home() {
 
       {/* ===== filary ===== */}
       <section className="section" data-hideable="home:filary">
+        <span className="mark-word" aria-hidden="true">piana</span>
+        <span className="side-label" aria-hidden="true">built on media connections</span>
         <div className="wrap">
           <div className="sec-head">
             <div>
@@ -63,7 +65,6 @@ export default function Home() {
               ['impakt', 'suma sygnałów musi wybrzmieć. rozliczamy się z rezonansu, nie z hałasu.', 4],
             ].map(([h, p], i) => (
               <div className={'card num-card rv rv-d' + (i % 4)} key={h}>
-                <FoamArt seed={i + 3} n={5} className="nc-bubble" />
                 <div className="nc-num" data-edit={`home_fil${i + 1}_n`}>{'0' + (i + 1)}</div>
                 <h3 data-edit={`home_fil${i + 1}_h`}>{h}</h3>
                 <p data-edit={`home_fil${i + 1}_p`}>{p}</p>
@@ -75,6 +76,7 @@ export default function Home() {
 
       {/* ===== co robimy — zapowiedź ===== */}
       <section className="section section-tint" data-hideable="home:uslugi">
+        <span className="mark-word mark-left mark-bottom" aria-hidden="true">sygnały</span>
         <div className="wrap">
           <div className="sec-head">
             <div>
@@ -101,6 +103,7 @@ export default function Home() {
 
       {/* ===== raport band ===== */}
       <section className="band brand-field on-brand" data-hideable="home:raport">
+        <span className="mark-word" aria-hidden="true">raport</span>
         <div className="wrap grid2">
           <div>
             <div className="eyebrow rv" data-edit="home_rap_eyebrow">raport 2026</div>
@@ -110,7 +113,7 @@ export default function Home() {
               <a className="btn btn-white" href="/raport" onClick={go('/raport')} data-edit="home_rap_cta">pobierz raport</a>
             </div>
           </div>
-          <FoamArt seed={12} n={16} light className="rv rv-d1" />
+          <FoamArt seed={12} n={300} light shape="bars" className="rv rv-d1" />
         </div>
       </section>
 
@@ -177,6 +180,7 @@ export default function Home() {
 
       {/* ===== manifest quote ===== */}
       <section className="band brand-field on-brand" data-hideable="home:manifest">
+        <span className="mark-word" aria-hidden="true">megafon</span>
         <div className="wrap" style={{ textAlign: 'center' }}>
           <h2 className="h-lg rv" style={{ margin: '0 auto' }} data-edit="home_mq_h">łączymy sygnały w całość.</h2>
           <p className="lead rv rv-d1" style={{ margin: '20px auto 0' }} data-edit="home_mq_p">poznaj nasz sposób myślenia o mediach — manifest FOAM.</p>

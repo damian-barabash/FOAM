@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
+import FoamArt from '../components/FoamArt.jsx';
 
 export default function Ekosystem() {
   const navigate = useNavigate();
@@ -21,17 +22,10 @@ export default function Ekosystem() {
       </section>
 
       <section className="section">
+        <span className="mark-word" aria-hidden="true">ekosystem</span>
         <div className="wrap">
           <div className="eco-venn rv in" aria-hidden="true">
-            <svg viewBox="0 0 300 160" style={{ width: 'min(460px, 80vw)' }}>
-              <circle cx="105" cy="80" r="62" fill="none" stroke="var(--foam-600)" strokeWidth="1.4" />
-              <circle cx="195" cy="80" r="62" fill="none" stroke="var(--foam-300)" strokeWidth="1.4" />
-              <circle cx="150" cy="80" r="3.4" fill="var(--foam-600)" />
-              <text x="72" y="84" textAnchor="middle" className="ch-tick" style={{ fontSize: 12 }}>media</text>
-              <text x="228" y="84" textAnchor="middle" className="ch-tick" style={{ fontSize: 12 }}>ludzie</text>
-              <text x="150" y="30" textAnchor="middle" className="ch-tick" style={{ fontSize: 11 }}>foam</text>
-            </svg>
-          </div>
+            <FoamArt seed={17} n={340} shape="venn" style={{ width: 'min(420px, 78vw)' }} /></div>
           <div className="grid3">
             <div className="card eco-card rv">
               <div className="eco-logo" data-edit="eko_c1_logo">foam.media</div>

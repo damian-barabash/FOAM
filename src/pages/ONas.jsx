@@ -43,7 +43,19 @@ export default function ONas() {
         </div>
       </section>
 
+      <section className="section" style={{ paddingTop: 0 }} data-hideable="on:zdjecia">
+        <div className="wrap">
+          <div className="photo-strip">
+            <div className="photo rv"><img src="/assets/photos/life-3.webp" alt="praca zespołu foam" loading="lazy" data-edit="on_ph1" data-edit-type="image" /></div>
+            <div className="photo rv rv-d1"><img src="/assets/photos/life-4.webp" alt="biuro foam.media" loading="lazy" data-edit="on_ph2" data-edit-type="image" /></div>
+            <div className="photo rv rv-d2"><img src="/assets/photos/life-5.webp" alt="spotkanie kreatywne" loading="lazy" data-edit="on_ph3" data-edit-type="image" /></div>
+          </div>
+        </div>
+      </section>
+
       <section className="section section-tint" data-hideable="on:zespol">
+        <span className="mark-word" aria-hidden="true">zespół</span>
+        <span className="side-label" aria-hidden="true">foam.media · warszawa</span>
         <div className="wrap">
           <div className="sec-head">
             <div>
@@ -56,7 +68,7 @@ export default function ONas() {
             {TEAM.map(([name, role], i) => (
               <div className={'card team-card rv rv-d' + (i % 3)} key={name}>
                 <div className="team-ava">
-                  <FoamArt seed={i + 51} n={9} light />
+                  <FoamArt seed={i + 51} n={100} light />
                   <span>{name.split(' ').map((w) => w[0]).join('')}</span>
                 </div>
                 <h3 data-edit={`on_t${i + 1}_name`}>{name}</h3>
@@ -68,6 +80,7 @@ export default function ONas() {
       </section>
 
       <section className="section" data-hideable="on:wartosci">
+        <span className="mark-word mark-left mark-bottom" aria-hidden="true">kultura</span>
         <div className="wrap">
           <div className="grid4">
             {[

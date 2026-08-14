@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
-import FoamArt from '../components/FoamArt.jsx';
 
 const SERVICES = [
   ['media & połączenia', 'planowanie i zakup mediów na relacjach, nie na cennikach: digital, DOOH, audio, prasa i formaty szyte na miarę. wiemy, do kogo zadzwonić.'],
@@ -31,11 +30,11 @@ export default function Oferta() {
       </section>
 
       <section className="section">
+        <span className="mark-word" aria-hidden="true">oferta</span>
         <div className="wrap">
           <div className="grid3">
             {SERVICES.map(([h, p], i) => (
               <div className={'card num-card rv rv-d' + (i % 3)} key={h}>
-                <FoamArt seed={i + 31} n={4} className="nc-bubble" />
                 <div className="nc-num" data-edit={`of_s${i + 1}_n`}>{'0' + (i + 1)}</div>
                 <h3 data-edit={`of_s${i + 1}_h`}>{h}</h3>
                 <p data-edit={`of_s${i + 1}_p`}>{p}</p>
@@ -46,11 +45,15 @@ export default function Oferta() {
       </section>
 
       <section className="section section-tint" data-hideable="of:model">
+        <span className="mark-word mark-left mark-bottom" aria-hidden="true">model</span>
         <div className="wrap grid2">
           <div>
             <div className="eyebrow rv" data-edit="of_mod_eyebrow">model współpracy</div>
             <h2 className="h-lg rv" data-edit="of_mod_h">od sprintu po orkiestrę.</h2>
             <p className="lead rv rv-d1" data-edit="of_mod_p">wchodzimy w pojedynczą kampanię, prowadzimy media marki w modelu ciągłym albo budujemy cały ekosystem komunikacji. zakres rośnie razem z zaufaniem.</p>
+            <div className="photo rv rv-d2" style={{ marginTop: 38 }}>
+              <img src="/assets/photos/life-7.webp" alt="wspólna praca nad kampanią" loading="lazy" data-edit="of_mod_img" data-edit-type="image" />
+            </div>
           </div>
           <div className="grid3" style={{ gridTemplateColumns: '1fr', gap: 12 }}>
             {[

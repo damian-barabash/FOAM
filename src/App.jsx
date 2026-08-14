@@ -4,6 +4,7 @@ import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import Bubbles from './components/Bubbles.jsx';
 import { trackPageview } from './lib/analytics.js';
+import { initSmooth, setSmoothEnabled } from './lib/smooth.js';
 
 import Home from './pages/Home.jsx';
 import Podejscie from './pages/Podejscie.jsx';
@@ -22,27 +23,38 @@ import NotFound from './pages/NotFound.jsx';
 const Admin = lazy(() => import('./admin/Admin.jsx'));
 
 function usePageFx(pathname) {
+  useEffect(() => { trackPageview(pathname); }, [pathname]);
+
+  // reveal-on-scroll: JEDEN globalny observer + MutationObserver — sekcje
+  // renderowane później (fetch insightów/case'ów) też są łapane. Bez tego
+  // dynamiczne bloki zostawały z opacity:0 („puste bloki").
   useEffect(() => {
-    trackPageview(pathname);
-    // reveal-on-scroll dla świeżo wyrenderowanej strony
-    const t = setTimeout(() => {
-      const els = document.querySelectorAll('.rv:not(.in)');
-      if (!('IntersectionObserver' in window)) { els.forEach((e) => e.classList.add('in')); return; }
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-      els.forEach((e) => io.observe(e));
-      usePageFx._io && usePageFx._io.disconnect();
-      usePageFx._io = io;
-    }, 60);
-    return () => clearTimeout(t);
-  }, [pathname]);
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.rv').forEach((e) => e.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+    const scan = () => document.querySelectorAll('.rv:not(.in)').forEach((el) => io.observe(el));
+    scan();
+    let t = 0;
+    const mo = new MutationObserver(() => { clearTimeout(t); t = setTimeout(scan, 60); });
+    mo.observe(document.body, { childList: true, subtree: true });
+    return () => { clearTimeout(t); io.disconnect(); mo.disconnect(); };
+  }, []);
 }
 
 export default function App() {
   const { pathname } = useLocation();
   const isAdmin = pathname.startsWith('/admin');
   usePageFx(pathname);
+
+  // bardzo płynny scroll (Lenis); w panelu wyłączony
+  useEffect(() => {
+    if (!isAdmin) initSmooth();
+    setSmoothEnabled(!isAdmin);
+  }, [isAdmin]);
 
   if (isAdmin) {
     return (

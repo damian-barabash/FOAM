@@ -113,7 +113,7 @@ export default function RaportPelny() {
 
       <section className="band brand-field on-brand">
         <div className="wrap" style={{ textAlign: 'center' }}>
-          <FoamArt seed={9} n={10} light style={{ width: 130, margin: '0 auto 18px' }} />
+          <FoamArt seed={9} n={280} light shape="arrow" style={{ width: 150, margin: '0 auto 18px' }} />
           <h2 className="h-lg rv" style={{ margin: '0 auto' }}>porozmawiajmy o twoich sygnałach.</h2>
           <div className="hero-ctas rv rv-d1" style={{ justifyContent: 'center' }}>
             <a className="btn btn-white" href="/kontakt">napisz do nas</a>
