@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
+import OutlineDiagram from '../components/OutlineDiagram.jsx';
 import FoamArt from '../components/FoamArt.jsx';
 
 export default function Podejscie() {
@@ -60,6 +61,7 @@ export default function Podejscie() {
             ].map(([h, p], i) => (
               <div className={'mo-card rv rv-d' + (i % 4) + (i === 2 ? ' mo-brand' : '')} key={h}>
                 <span className="mo-num" data-edit={`pod_fil${i + 1}_n`}>{'0' + (i + 1)}</span>
+                <OutlineDiagram kind={['nodes','wave','target','pulse'][i]} className="mo-diagram" />
                 {i === 2 ? <FoamArt seed={43} n={110} light className="mo-foam" /> : null}
                 <h3 data-edit={`pod_fil${i + 1}_h`}>{h}</h3>
                 <p data-edit={`pod_fil${i + 1}_p`}>{p}</p>
@@ -89,6 +91,7 @@ export default function Podejscie() {
             ].map(([h, p], i) => (
               <div className={'mo-card rv rv-d' + (i % 4) + (i === 0 ? ' mo-brand' : '')} key={h}>
                 <span className="mo-num" data-edit={`pod_way${i + 1}_n`}>{'0' + (i + 1)}</span>
+                <OutlineDiagram kind={['wave','nodes','signal','pulse'][i]} className="mo-diagram" />
                 {i === 0 ? <FoamArt seed={44} n={110} light className="mo-foam" /> : null}
                 <h3 data-edit={`pod_way${i + 1}_h`}>{h}</h3>
                 <p data-edit={`pod_way${i + 1}_p`}>{p}</p>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useCms } from '../lib/content.js';
+import OutlineDiagram from '../components/OutlineDiagram.jsx';
 import { postLead } from '../lib/api.js';
 import { LineChart, StatTile } from '../components/Charts.jsx';
 import FoamArt from '../components/FoamArt.jsx';
@@ -134,6 +135,7 @@ export default function Raport() {
             ].map(([h, p], i) => (
               <div className={'mo-card rv rv-d' + (i % 3) + ((i === 1 || i === 5) ? ' mo-brand' : '')} key={h}>
                 <span className="mo-num" data-edit={`rap_toc${i + 1}_n`}>{'0' + (i + 1)}</span>
+                <OutlineDiagram kind={['nodes','wave','orbit','signal','chart','target'][i]} className="mo-diagram" />
                 {(i === 1 || i === 5) ? <FoamArt seed={46} n={110} light className="mo-foam" /> : null}
                 <h3 data-edit={`rap_toc${i + 1}_h`}>{h}</h3>
                 <p data-edit={`rap_toc${i + 1}_p`}>{p}</p>

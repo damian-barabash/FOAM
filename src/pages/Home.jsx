@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
+import OutlineDiagram from '../components/OutlineDiagram.jsx';
 import { fetchRows } from '../lib/api.js';
 import FoamArt from '../components/FoamArt.jsx';
 import CaseBubble from '../components/CaseBubble.jsx';
@@ -68,6 +69,7 @@ export default function Home() {
             ].map(([h, p], i) => (
               <div className={'mo-card rv rv-d' + (i % 4) + (i === 1 ? ' mo-brand' : '')} key={h}>
                 <span className="mo-num" data-edit={`home_fil${i + 1}_n`}>{'0' + (i + 1)}</span>
+                <OutlineDiagram kind={['nodes','wave','target','pulse'][i]} className="mo-diagram" />
                 {i === 1 ? <FoamArt seed={41} n={110} light className="mo-foam" /> : null}
                 <h3 data-edit={`home_fil${i + 1}_h`}>{h}</h3>
                 <p data-edit={`home_fil${i + 1}_p`}>{p}</p>
@@ -97,6 +99,7 @@ export default function Home() {
             ].map(([h, p], i) => (
               <div className={'mo-card rv rv-d' + i + (i === 0 ? ' mo-brand' : '')} key={h}>
                 <span className="mo-num" data-edit={`home_usl${i + 1}_n`}>{'0' + (i + 1)}</span>
+                <OutlineDiagram kind={['nodes','signal','chart'][i]} className="mo-diagram" />
                 {i === 0 ? <FoamArt seed={42} n={110} light className="mo-foam" /> : null}
                 <h3 data-edit={`home_usl${i + 1}_h`}>{h}</h3>
                 <p data-edit={`home_usl${i + 1}_p`}>{p}</p>

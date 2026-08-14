@@ -70,5 +70,10 @@ export default function CursorRing() {
     };
   }, []);
 
-  return <div id="cursor-ring" ref={ref} aria-hidden="true"><span /></div>;
+  return (
+    <div id="cursor-ring" ref={ref} aria-hidden="true">
+      <span />
+      {Array.from({ length: 8 }, (_, k) => <i key={k} style={{ '--a': `${k * 45}deg` }} />)}
+    </div>
+  );
 }

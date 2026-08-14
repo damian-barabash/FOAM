@@ -424,8 +424,7 @@
 
 /* ---------- kursor-bańka + magnetyczne przyciski ---------- */
 #cursor-ring { position: fixed; left: -19px; top: -19px; width: 38px; height: 38px; pointer-events: none; z-index: 300; }
-#cursor-ring span { display: block; width: 100%; height: 100%; border-radius: 50%; border: 1.6px solid #fff; transition: transform .28s ease, border-color .25s ease; }
-#cursor-ring.on-white span { border-color: var(--foam-500); }
+#cursor-ring span { display: block; width: 100%; height: 100%; border-radius: 50%; border: 1.6px solid currentColor; transition: transform .28s ease; }
 #cursor-ring.pop span { animation: ring-pop .52s ease-out; }
 @keyframes ring-pop {
   0% { transform: scale(1); opacity: 1; }
@@ -440,3 +439,34 @@
 /* nagłówki nigdy nie wychodzą poza kartę */
 .mo-card h3, .num-card h3, .rl-row h3, .cb-title, .post-card h3 { overflow-wrap: anywhere; max-width: 100%; }
 @media (max-width: 720px) { .mo-card h3 { font-size: 18px; } }
+
+/* ---------- animowane piktogramy outline w kartach ---------- */
+.mo-diagram { position: absolute; top: 28px; left: clamp(24px, 2.4vw, 38px); width: 62px; height: 62px; color: var(--foam-500); z-index: 1; }
+.mo-brand .mo-diagram { color: rgba(255, 255, 255, .9); }
+.od-dot { fill: currentColor; stroke: none; animation: od-pulse 2.6s ease-in-out infinite; }
+.od-fade { animation: od-pulse 2.6s ease-in-out infinite; }
+.od-ring { animation: od-ring 2.8s ease-out infinite; transform-origin: 32px 32px; transform-box: view-box; }
+.od-draw { stroke-dasharray: 90; animation: od-draw 3.4s ease-in-out infinite; }
+.od-draw.od-long { stroke-dasharray: 130; }
+.od-spin { animation: od-spin 9s linear infinite; transform-origin: 32px 32px; transform-box: view-box; }
+.od-orbit { animation: od-spin 7s linear infinite; transform-origin: 32px 32px; transform-box: view-box; }
+.od-sat { fill: currentColor; stroke: none; }
+.od-f1 { animation-delay: .3s; }
+.od-f2 { animation-delay: .7s; }
+.od-f3 { animation-delay: 1.1s; }
+@keyframes od-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+@keyframes od-ring { 0% { transform: scale(.45); opacity: 1; } 80% { transform: scale(1.05); opacity: 0; } 100% { opacity: 0; } }
+@keyframes od-draw { 0% { stroke-dashoffset: 90; } 45%, 60% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -90; } }
+@keyframes od-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .od * { animation: none !important; } }
+
+/* kursor: pękanie jak bańki na canvasie — pierścień drobnych kropek na zewnątrz */
+#cursor-ring { color: #fff; }
+#cursor-ring.on-white { color: var(--foam-500); }
+#cursor-ring span { border-color: currentColor; }
+#cursor-ring i { position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; border: 1.4px solid currentColor; opacity: 0; }
+#cursor-ring.pop i { animation: dot-fly .5s ease-out; }
+@keyframes dot-fly {
+  0% { transform: rotate(var(--a)) translateX(11px) scale(.5); opacity: 1; }
+  100% { transform: rotate(var(--a)) translateX(36px) scale(1); opacity: 0; }
+}
