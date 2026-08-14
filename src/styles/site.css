@@ -292,7 +292,7 @@
 .mo-card {
   position: relative; z-index: 1; overflow: hidden;
   border: 1px solid var(--border-subtle); border-radius: 26px;
-  padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px) clamp(36px, 3.4vw, 52px);
+  padding: clamp(26px, 2.6vw, 40px) clamp(20px, 1.9vw, 30px) clamp(32px, 3vw, 46px);
   background: radial-gradient(130% 100% at 16% 10%, #ffffff 0%, #f7faff 58%, #ecf3fe 100%);
   box-shadow: var(--shadow-sm);
   transition: transform .35s ease, box-shadow .35s ease;
@@ -301,11 +301,11 @@
 .mo-num {
   position: absolute; z-index: 0; top: -12px; right: 4px;
   font-family: var(--font-display); font-stretch: 125%; font-weight: 700;
-  font-size: clamp(84px, 8vw, 140px); line-height: 1; letter-spacing: -.02em;
+  font-size: clamp(72px, 7.2vw, 128px); line-height: 1; letter-spacing: -.02em;
   color: transparent; -webkit-text-stroke: 1.5px rgba(126, 164, 224, .45);
   pointer-events: none; user-select: none;
 }
-.mo-card h3 { font-size: clamp(19px, 1.7vw, 24px); margin: clamp(52px, 6vw, 96px) 0 12px; position: relative; }
+.mo-card h3 { font-size: clamp(16.5px, 1.32vw, 21px); margin: 18px 0 12px; position: relative; letter-spacing: -.01em; }
 .mo-card p { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); position: relative; max-width: 36ch; }
 .mo-foam { position: absolute; right: -36px; bottom: -44px; width: 160px; opacity: .9; pointer-events: none; }
 .mo-brand { background: var(--grad-brand); border: 0; color: #fff; }
@@ -437,11 +437,12 @@
 .btn { will-change: transform; }
 
 /* nagłówki nigdy nie wychodzą poza kartę */
-.mo-card h3, .num-card h3, .rl-row h3, .cb-title, .post-card h3 { overflow-wrap: anywhere; max-width: 100%; }
+.mo-card h3, .num-card h3, .rl-row h3, .cb-title, .post-card h3 { overflow-wrap: break-word; hyphens: manual; max-width: 100%; }
 @media (max-width: 720px) { .mo-card h3 { font-size: 18px; } }
 
 /* ---------- animowane piktogramy outline w kartach ---------- */
-.mo-diagram { position: absolute; top: 28px; left: clamp(24px, 2.4vw, 38px); width: 62px; height: 62px; color: var(--foam-500); z-index: 1; }
+/* w przepływie (nie absolute) — nigdy nie nachodzi na numer ani tekst */
+.mo-diagram { display: block; width: 62px; height: 62px; color: var(--foam-500); position: relative; z-index: 1; margin-bottom: 6px; }
 .mo-brand .mo-diagram { color: rgba(255, 255, 255, .9); }
 .od-dot { fill: currentColor; stroke: none; animation: od-pulse 2.6s ease-in-out infinite; }
 .od-fade { animation: od-pulse 2.6s ease-in-out infinite; }
