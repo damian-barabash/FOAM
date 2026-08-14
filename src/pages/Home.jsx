@@ -49,6 +49,7 @@ export default function Home() {
       <section className="section" data-hideable="home:filary">
         <span className="mark-word" aria-hidden="true">piana</span>
         <span className="side-label" aria-hidden="true">built on media connections</span>
+        <FoamArt seed={5} n={150} className="foam-deco fd-tr" />
         <div className="wrap">
           <div className="sec-head">
             <div>
@@ -77,6 +78,7 @@ export default function Home() {
       {/* ===== co robimy — zapowiedź ===== */}
       <section className="section section-tint" data-hideable="home:uslugi">
         <span className="mark-word mark-left mark-bottom" aria-hidden="true">sygnały</span>
+        <FoamArt seed={6} n={150} className="foam-deco fd-br" />
         <div className="wrap">
           <div className="sec-head">
             <div>
@@ -181,6 +183,7 @@ export default function Home() {
       {/* ===== manifest quote ===== */}
       <section className="band brand-field on-brand" data-hideable="home:manifest">
         <span className="mark-word" aria-hidden="true">megafon</span>
+        <FoamArt seed={7} n={150} light className="foam-deco fd-bl" />
         <div className="wrap" style={{ textAlign: 'center' }}>
           <h2 className="h-lg rv" style={{ margin: '0 auto' }} data-edit="home_mq_h">łączymy sygnały w całość.</h2>
           <p className="lead rv rv-d1" style={{ margin: '20px auto 0' }} data-edit="home_mq_p">poznaj nasz sposób myślenia o mediach — manifest FOAM.</p>

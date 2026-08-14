@@ -28,15 +28,42 @@ function usePageFx(pathname) {
   // reveal-on-scroll: JEDEN globalny observer + MutationObserver — sekcje
   // renderowane później (fetch insightów/case'ów) też są łapane. Bez tego
   // dynamiczne bloki zostawały z opacity:0 („puste bloki").
+  // Nagłówki h1/h2 dzielimy na słowa (wjazd spod maski ze staggerem);
+  // elementy z gotowym .in (hero) są „przezbrajane", żeby wejście zagrało po load.
   useEffect(() => {
     if (!('IntersectionObserver' in window)) {
       document.querySelectorAll('.rv').forEach((e) => e.classList.add('in'));
       return;
     }
+    const splitWords = (el) => {
+      if ([...el.childNodes].some((n) => n.nodeType !== 3)) return; // tylko czysty tekst
+      const words = el.textContent.split(/\s+/).filter(Boolean);
+      if (!words.length || words.length > 14) return;
+      el.textContent = '';
+      words.forEach((w, i) => {
+        const s = document.createElement('span');
+        s.className = 'split-w';
+        s.style.setProperty('--wi', i);
+        const inner = document.createElement('i');
+        inner.textContent = w;
+        s.appendChild(inner);
+        el.appendChild(s);
+        if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+      });
+    };
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
     }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
-    const scan = () => document.querySelectorAll('.rv:not(.in)').forEach((el) => io.observe(el));
+    const arm = (el) => {
+      el.dataset.rvArmed = '1';
+      if (el.closest('.adm')) { el.classList.add('in'); return; } // panel: bez teatru
+      if (el.matches('h1, h2')) splitWords(el);
+      el.classList.remove('in');
+      io.observe(el);
+    };
+    const scan = () => document.querySelectorAll('.rv:not([data-rv-armed])').forEach(arm);
     scan();
     let t = 0;
     const mo = new MutationObserver(() => { clearTimeout(t); t = setTimeout(scan, 60); });

@@ -33,6 +33,7 @@ export default function Insighty() {
 
       <section className="section">
         <span className="mark-word" aria-hidden="true">insighty</span>
+        <FoamArt seed={13} n={150} className="foam-deco fd-bl" />
         <div className="wrap">
           {cats.length > 1 && (
             <div className="post-tags rv in" style={{ marginBottom: 30 }}>

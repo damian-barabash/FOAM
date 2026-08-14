@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useCms } from '../lib/content.js';
 import { postLead } from '../lib/api.js';
+import FoamArt from '../components/FoamArt.jsx';
 
 const TOPICS = [
   ['biznes', 'współpraca / kampania'],
@@ -46,6 +47,7 @@ export default function Kontakt() {
 
       <section className="section">
         <span className="mark-word" aria-hidden="true">halo</span>
+        <FoamArt seed={19} n={150} shape="speech" className="foam-deco fd-bl" />
         <div className="wrap grid2" style={{ alignItems: 'flex-start' }}>
           <div className="card raport-form rv">
             {state === 'done' ? (

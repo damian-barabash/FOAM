@@ -93,17 +93,26 @@ export default function FoamArt({ seed = 7, n = 220, className = '', style, ligh
           )}
         </radialGradient>
       </defs>
-      {circles.map((b, i) => (
+      {/* bańki w ~10 podgrupach — każda faluje własnym rytmem (żywa piana) */}
+      {Array.from({ length: 10 }, (_, gi) => (
         <g
-          key={i}
-          opacity={b.o}
-          className={i % 7 === 0 ? 'fa-p' : undefined}
-          style={i % 7 === 0 ? { '--o': b.o, animationDelay: `${(i % 9) * 0.55}s` } : undefined}
+          key={gi}
+          className="fa-g"
+          style={{ '--fd': `${5.5 + (gi % 5) * 1.1}s`, animationDelay: `${gi * 0.45}s` }}
         >
-          <circle cx={b.x} cy={b.y} r={b.r} fill={`url(#${gid})`} stroke={stroke} strokeWidth=".28" />
-          {b.hl && b.r > 2 ? (
-            <circle cx={b.x - b.r * 0.32} cy={b.y - b.r * 0.36} r={b.r * 0.17} fill={hlFill} />
-          ) : null}
+          {circles.filter((_, i) => i % 10 === gi).map((b, i) => (
+            <g
+              key={i}
+              opacity={b.o}
+              className={i % 3 === 0 ? 'fa-p' : undefined}
+              style={i % 3 === 0 ? { '--o': b.o, animationDelay: `${(i % 9) * 0.5}s`, animationDuration: `${3 + (i % 4)}s` } : undefined}
+            >
+              <circle cx={b.x} cy={b.y} r={b.r} fill={`url(#${gid})`} stroke={stroke} strokeWidth=".28" />
+              {b.hl && b.r > 2 ? (
+                <circle cx={b.x - b.r * 0.32} cy={b.y - b.r * 0.36} r={b.r * 0.17} fill={hlFill} />
+              ) : null}
+            </g>
+          ))}
         </g>
       ))}
     </svg>

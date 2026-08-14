@@ -32,7 +32,8 @@ export function applyFlat(root, content, opts = {}) {
     const t = el.getAttribute('data-edit-type');
     if (t === 'image') { if (el.tagName === 'IMG' && v) el.src = v; }
     else if (t === 'html') el.innerHTML = v;
-    else el.textContent = v;
+    // no-op gdy tekst identyczny — nie niszczy animacji split-w na nagłówkach
+    else if (el.textContent.trim() !== String(v).trim()) el.textContent = v;
   });
   const hidden = new Set(content._hidden || []);
   root.querySelectorAll('[data-hideable]').forEach((el) => {

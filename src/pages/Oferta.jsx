@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
+import FoamArt from '../components/FoamArt.jsx';
 
 const SERVICES = [
   ['media & połączenia', 'planowanie i zakup mediów na relacjach, nie na cennikach: digital, DOOH, audio, prasa i formaty szyte na miarę. wiemy, do kogo zadzwonić.'],
@@ -31,6 +32,7 @@ export default function Oferta() {
 
       <section className="section">
         <span className="mark-word" aria-hidden="true">oferta</span>
+        <FoamArt seed={10} n={150} className="foam-deco fd-bl" />
         <div className="wrap">
           <div className="grid3">
             {SERVICES.map(([h, p], i) => (

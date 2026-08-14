@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 
 // Bańki tła: same obwódki (cienki stroke), dryf we wszystkich kierunkach,
-// klik = pęknięcie. Kolor zależny od tła pod bańką: białe na polach brandowych
-// (.brand-field), błękitne na białych sekcjach. Warstwa NAD tłem sekcji,
-// ale POD treścią (.wrap ma wyższy z-index) — nie nachodzi na tekst i karty.
+// klik = pęknięcie. Rysowane TYLKO nad polami brandowymi (.brand-field) —
+// na białych sekcjach niewidoczne (fizyka dalej działa, więc wpływają z krawędzi).
+// Warstwa NAD tłem sekcji, ale POD treścią (.wrap ma wyższy z-index).
 export default function Bubbles({ density = 1 }) {
   const ref = useRef(null);
 
@@ -59,11 +59,7 @@ export default function Bubbles({ density = 1 }) {
       const target = Math.max(12, Math.min(44, Math.round((W * H) / 42000 * density)));
       bubbles = Array.from({ length: target }, spawn);
     }
-    function strokeFor(y, alpha) {
-      return onBrand(y)
-        ? `rgba(255,255,255,${alpha})`
-        : `rgba(126,164,224,${Math.min(1, alpha + 0.12)})`;
-    }
+
     function draw(t) {
       const dt = Math.min((t - last) / 1000, .05); last = t;
       ctx.clearRect(0, 0, W, H);
@@ -86,7 +82,8 @@ export default function Bubbles({ density = 1 }) {
         if (b.x > W + b.r * 2) b.x = -b.r;
         if (b.y < -b.r * 2) b.y = H + b.r;
         if (b.y > H + b.r * 2) b.y = -b.r;
-        ctx.strokeStyle = strokeFor(b.y, b.a);
+        if (!onBrand(b.y)) continue; // na białym tle nie rysujemy
+        ctx.strokeStyle = `rgba(255,255,255,${b.a})`;
         ctx.beginPath();
         ctx.arc(b.x + b.px, b.y + b.py, b.r, 0, 7);
         ctx.stroke();
@@ -96,7 +93,8 @@ export default function Bubbles({ density = 1 }) {
         p.t += dt;
         const k = p.t / .45;
         if (k >= 1) { bursts.splice(i, 1); continue; }
-        ctx.strokeStyle = strokeFor(p.y, (1 - k) * .85);
+        if (!onBrand(p.y)) { bursts.splice(i, 1); continue; }
+        ctx.strokeStyle = `rgba(255,255,255,${(1 - k) * .85})`;
         for (let j = 0; j < 8; j++) {
           const a = j / 8 * 6.28 + p.seed;
           const rr = p.r * (0.5 + k * 1.6);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { fetchRows } from '../lib/api.js';
+import FoamArt from '../components/FoamArt.jsx';
 
 export default function CaseStudies() {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ export default function CaseStudies() {
 
       <section className="section">
         <span className="mark-word" aria-hidden="true">case</span>
+        <FoamArt seed={14} n={150} className="foam-deco fd-tr" />
         <div className="wrap">
           {items === null ? (
             <div className="mono" style={{ color: 'var(--ink-3)' }}>ładowanie…</div>

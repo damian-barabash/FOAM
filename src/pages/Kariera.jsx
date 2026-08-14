@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useCms } from '../lib/content.js';
 import { fetchRows } from '../lib/api.js';
+import FoamArt from '../components/FoamArt.jsx';
 
 export default function Kariera() {
   const ctx = useCms('kariera');
@@ -26,6 +27,7 @@ export default function Kariera() {
 
       <section className="section">
         <span className="mark-word" aria-hidden="true">kariera</span>
+        <FoamArt seed={18} n={150} className="foam-deco fd-tr" />
         <div className="wrap">
           <div className="sec-head">
             <div>

@@ -96,7 +96,20 @@
 @keyframes fa-drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 .fa-p { animation: fa-pulse 4.5s ease-in-out infinite; }
 @keyframes fa-pulse { 0%, 100% { opacity: var(--o, .8); } 50% { opacity: .22; } }
-@media (prefers-reduced-motion: reduce) { .foam-art, .fa-p { animation: none; } }
+.fa-g { animation: fa-wob var(--fd, 7s) ease-in-out infinite; }
+@keyframes fa-wob {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(1.3px, -2.3px); }
+  66% { transform: translate(-1.2px, 1.5px); }
+}
+@media (prefers-reduced-motion: reduce) { .foam-art, .fa-p, .fa-g { animation: none; } }
+
+/* pienne dekory w rogach sekcji (za treścią, .wrap = z4) */
+.foam-deco { position: absolute; z-index: 0; width: clamp(170px, 20vw, 300px); opacity: .85; pointer-events: none; }
+.fd-tr { top: 44px; right: 2%; }
+.fd-bl { bottom: 34px; left: 2%; }
+.fd-br { bottom: 34px; right: 3%; }
+@media (max-width: 720px) { .foam-deco { width: 130px; opacity: .5; } }
 
 /* pasek-cytat na gradiencie */
 .band { padding: clamp(100px, 12vw, 180px) 0; }

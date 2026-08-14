@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from './wipe.js';
 import { postLead } from '../lib/api.js';
+import FoamArt from './FoamArt.jsx';
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ export default function Footer() {
 
   return (
     <footer className="footer brand-field on-brand">
+      <FoamArt seed={20} n={150} light className="foam-deco fd-tr" />
       <div className="wrap">
         <div className="foot-top">
           <div className="foot-news">

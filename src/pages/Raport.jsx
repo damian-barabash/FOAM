@@ -89,6 +89,7 @@ export default function Raport() {
 
       <section className="section">
         <span className="mark-word" aria-hidden="true">dane</span>
+        <FoamArt seed={11} n={150} className="foam-deco fd-bl" />
         <div className="wrap">
           <div className="sec-head">
             <div>

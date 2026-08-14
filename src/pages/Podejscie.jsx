@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
+import FoamArt from '../components/FoamArt.jsx';
 
 export default function Podejscie() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export default function Podejscie() {
 
       <section className="section">
         <span className="mark-word" aria-hidden="true">manifest</span>
+        <FoamArt seed={8} n={150} className="foam-deco fd-tr" />
         <div className="wrap grid2">
           <div>
             <div className="eyebrow rv" data-edit="pod_man_eyebrow">manifest</div>
@@ -62,6 +64,7 @@ export default function Podejscie() {
 
       <section className="section" data-hideable="pod:praca">
         <span className="mark-word mark-left mark-bottom" aria-hidden="true">proces</span>
+        <FoamArt seed={9} n={150} className="foam-deco fd-br" />
         <div className="wrap">
           <div className="sec-head">
             <div>

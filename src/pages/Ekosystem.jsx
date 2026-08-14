@@ -47,6 +47,7 @@ export default function Ekosystem() {
       </section>
 
       <section className="section section-tint" data-hideable="eko:jak">
+        <FoamArt seed={15} n={150} className="foam-deco fd-tr" />
         <div className="wrap grid2">
           <div>
             <div className="eyebrow rv" data-edit="eko_how_eyebrow">co to daje markom</div>
