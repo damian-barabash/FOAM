@@ -15,13 +15,14 @@
 .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%; background: #fff; transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
 .nav-links a:hover, .nav-links a.on { color: #fff; }
 .nav-links a:hover::after, .nav-links a.on::after { transform: scaleX(1); }
-.nav-cta { position: absolute; left: var(--gutter); top: 50%; translate: 0 -50%; transform: translateX(calc(100vw - 2 * var(--gutter) - 100%)); transition: transform .55s cubic-bezier(.65, 0, .35, 1); z-index: 3; display: flex; align-items: center; }
+.nav-cta { position: absolute; left: var(--gutter); top: 50%; translate: 0 -50%; transform: translateX(calc(100vw - 2 * var(--gutter) - 100%)); z-index: 3; display: flex; align-items: center; }
 .nav.scrolled .nav-cta { animation: cta-swap .85s cubic-bezier(.65, 0, .35, 1) both; }
 @keyframes cta-swap {
   0% { transform: translateX(calc(100vw - 2 * var(--gutter) - 100%)); }
-  40% { transform: translateX(calc(100vw - var(--gutter))); }      /* za prawą krawędź */
-  50% { transform: translateX(calc(-100% - var(--gutter) - 24px)); } /* teleport za lewą */
-  100% { transform: translateX(0); }                                /* wjazd z lewej */
+  44% { transform: translateX(calc(100vw + 20px)); }                  /* za prawą krawędź */
+  44.1% { transform: translateX(calc(-100% - var(--gutter) - 30px)); } /* natychmiastowy teleport za lewą (niewidoczny) */
+  56% { transform: translateX(calc(-100% - var(--gutter) - 30px)); }
+  100% { transform: translateX(0); }                                  /* wjazd z lewej */
 }
 .nav-raport { padding: 10px 22px; font-size: 14px; }
 .nav-burger { display: block; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--w-40); position: absolute; right: var(--gutter); top: 50%; translate: 0 -50%; flex: none; opacity: 0; transform: translateX(44px); pointer-events: none; transition: opacity .35s ease, transform .5s cubic-bezier(.16, 1, .3, 1); }
