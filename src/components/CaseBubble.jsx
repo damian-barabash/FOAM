@@ -27,7 +27,9 @@ export default function CaseBubble({ i, title, client, children }) {
       ref={ref}
       className={'cb' + (popped ? ' cb-popped' : '')}
       onMouseEnter={() => setPopped(true)}
+      onMouseLeave={() => { if (matchMedia('(hover: hover)').matches) setPopped(false); }}
       onFocus={() => setPopped(true)}
+      onBlur={() => { if (matchMedia('(hover: hover)').matches) setPopped(false); }}
       tabIndex={0}
       aria-label={`case study: ${title}`}
     >

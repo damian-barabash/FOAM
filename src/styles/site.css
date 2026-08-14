@@ -387,3 +387,56 @@
 @media (min-width: 1021px) {
   .page-hero:has(.ph-left) > .wrap { padding-left: clamp(380px, 42vw, 620px); }
 }
+
+/* ============ OUTLINE RESTYLE: tylko obwódki, zero cieni ============ */
+:root { --shadow-sm: none; --shadow-md: none; }
+.card, .mo-card { background: transparent; border: 1.5px solid rgba(112, 152, 222, .5); box-shadow: none; }
+.mo-brand { background: var(--grad-brand); border: 0; }
+.num-card:hover, .mo-card:hover, .post-card:hover, .job-row:hover { box-shadow: none; border-color: var(--foam-600); }
+.nc-num { background: transparent; }
+.post-cover { background: transparent; border-bottom: 1.5px solid rgba(112, 152, 222, .35); }
+.photo { box-shadow: none; border: 1.5px solid rgba(112, 152, 222, .5); }
+.brand-field .photo { border-color: var(--w-40); }
+.barsh-track { background: transparent; border: 1px solid var(--border-subtle); }
+
+/* karty formularzy na polu brandowym = szkło z obwódką (bez białej płyty) */
+.on-brand .card { background: rgba(255, 255, 255, .07); border: 1.5px solid var(--w-40); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.on-brand .card .field { background: var(--w-15); border-color: var(--w-40); color: #fff; }
+.on-brand .card .field::placeholder { color: var(--w-70); }
+.on-brand .card .field:focus { border-color: #fff; box-shadow: 0 0 0 3px var(--w-15); }
+.on-brand .card .check { color: var(--w-70); }
+.on-brand .card .check input { accent-color: #fff; }
+.on-brand .card .form-note { color: var(--w-70); }
+.on-brand .card h3 { color: #fff; }
+
+/* bańka case'a: czysty outline */
+.cb-bubble::before { background: transparent; box-shadow: none; border: 1.6px solid rgba(112, 152, 222, .65); }
+.cb-bubble .cb-hint { color: var(--foam-500); }
+
+/* grid case'ów: 2 kolumny → na telefonie kolumna */
+.post-grid.pg-2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 720px) {
+  .post-grid.pg-2 { grid-template-columns: 1fr; }
+  .cb-bubble::before { width: min(94%, 300px); }
+  .cb-bubble .cb-title { font-size: 15px; max-width: 220px; }
+  .cb-bubble .cb-hint { font-size: 10px; }
+}
+
+/* ---------- kursor-bańka + magnetyczne przyciski ---------- */
+#cursor-ring { position: fixed; left: -19px; top: -19px; width: 38px; height: 38px; pointer-events: none; z-index: 300; }
+#cursor-ring span { display: block; width: 100%; height: 100%; border-radius: 50%; border: 1.6px solid #fff; transition: transform .28s ease, border-color .25s ease; }
+#cursor-ring.on-white span { border-color: var(--foam-500); }
+#cursor-ring.pop span { animation: ring-pop .52s ease-out; }
+@keyframes ring-pop {
+  0% { transform: scale(1); opacity: 1; }
+  42% { transform: scale(2.1); opacity: 0; }
+  52% { transform: scale(.15); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+#cursor-ring.big span { transform: scale(1.9); }
+@media (hover: none) { #cursor-ring { display: none; } }
+.btn { will-change: transform; }
+
+/* nagłówki nigdy nie wychodzą poza kartę */
+.mo-card h3, .num-card h3, .rl-row h3, .cb-title, .post-card h3 { overflow-wrap: anywhere; max-width: 100%; }
+@media (max-width: 720px) { .mo-card h3 { font-size: 18px; } }

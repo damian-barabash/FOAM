@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import Bubbles from './components/Bubbles.jsx';
+import CursorRing from './components/CursorRing.jsx';
 import { trackPageview } from './lib/analytics.js';
 import { initSmooth, setSmoothEnabled } from './lib/smooth.js';
 
@@ -106,6 +107,7 @@ export default function App() {
   return (
     <>
       <Bubbles />
+      <CursorRing />
       <Nav />
       <main>
         <Routes>

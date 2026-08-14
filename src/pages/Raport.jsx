@@ -48,7 +48,7 @@ export default function Raport() {
           </div>
 
           {/* gated form */}
-          <div className="card raport-form rv in rv-d1" style={{ color: 'var(--ink)' }}>
+          <div className="card raport-form rv in rv-d1">
             {state === 'done' ? (
               <div className="form-ok">
                 <div className="fo-big">🫧</div>

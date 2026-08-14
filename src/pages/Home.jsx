@@ -169,7 +169,7 @@ export default function Home() {
               </div>
               <a className="btn btn-ghost rv" href="/case-studies" onClick={go('/case-studies')}>wszystkie case studies</a>
             </div>
-            <div className="post-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+            <div className="post-grid pg-2">
               {cases.map((c, i) => (
                 <CaseBubble key={c.slug} i={i} title={c.title} client={c.client}>
                 <a className={'card post-card'} href="/case-studies" onClick={go('/case-studies')}>

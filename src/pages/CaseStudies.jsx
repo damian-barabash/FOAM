@@ -35,7 +35,7 @@ export default function CaseStudies() {
           ) : items.length === 0 ? (
             <div className="mono" style={{ color: 'var(--ink-3)' }}>pierwsze case studies w drodze.</div>
           ) : (
-            <div className="post-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+            <div className="post-grid pg-2">
               {items.map((c, i) => (
                 <CaseBubble key={c.slug} i={i} title={c.title} client={c.client}>
                   <div className="card post-card">
