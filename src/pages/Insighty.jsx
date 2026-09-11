@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { fetchRows } from '../lib/api.js';
-import FoamArt from '../components/FoamArt.jsx';
+import Obj from '../components/Obj.jsx';
 import Aura from '../components/Aura.jsx';
 
 export default function Insighty() {
@@ -25,7 +25,7 @@ export default function Insighty() {
   return (
     <div className="page-insighty">
       <section className="page-hero brand-field on-brand">
-        <div className="ph-mega ph-right" aria-hidden="true"><FoamArt seed={62} n={330} light shape="bulb" /></div>
+        <div className="ph-mega ph-right" aria-hidden="true"><Obj name="bulb" /></div>
         <div className="wrap">
           <div className="eyebrow rv in">insighty / punkty widzenia</div>
           <h1 className="h-xl rv in">sygnały, które łowimy.</h1>
@@ -83,7 +83,7 @@ export default function Insighty() {
               <button className="btn btn-white" onClick={() => document.querySelector('.foot-news')?.scrollIntoView({ behavior: 'smooth' })}>zapisz się niżej ↓</button>
             </div>
           </div>
-          <FoamArt seed={23} n={300} light shape="speech" className="rv rv-d1" />
+          <Obj name="speech" className="band-obj rv rv-d1" />
         </div>
       </section>
     </div>

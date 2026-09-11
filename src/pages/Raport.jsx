@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useCms } from '../lib/content.js';
 import { postLead } from '../lib/api.js';
 import { LineChart, StatTile } from '../components/Charts.jsx';
+import Obj from '../components/Obj.jsx';
 import Aura, { Tile } from '../components/Aura.jsx';
 
 const PREVIEW = [42, 48, 47, 55, 61, 58, 67, 74, 79, 88, 96, 108];
@@ -90,6 +91,7 @@ export default function Raport() {
       <section className="section">
         <div className="wrap">
           <div className="sec-head">
+            <Obj name="shield" className="sec-obj rv" />
             <div className="eyebrow rv" data-edit="rap_prev_eyebrow">podgląd danych</div>
             <h2 className="h-lg rv" data-edit="rap_prev_h">indeks rezonansu rośnie.</h2>
             <p className="lead rv rv-d1" data-edit="rap_prev_p">średni indeks rezonansu marek, które planują media jako sumę małych sygnałów — vs. rynek. pełne dane w raporcie.</p>

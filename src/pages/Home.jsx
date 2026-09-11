@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
 import { fetchRows } from '../lib/api.js';
-import FoamArt from '../components/FoamArt.jsx';
 import CaseRow from '../components/CaseRow.jsx';
+import Obj from '../components/Obj.jsx';
 import { Tile } from '../components/Aura.jsx';
 
 const FILARY = [
@@ -88,7 +88,7 @@ export default function Home() {
               <a className="btn btn-white" href="/raport" onClick={go('/raport')} data-edit="home_rap_cta">pobierz raport</a>
             </div>
           </div>
-          <FoamArt seed={12} n={300} light shape="bars" className="rv rv-d1" />
+          <Obj name="bars" className="band-obj rv rv-d1" />
         </div>
       </section>
 
@@ -114,7 +114,7 @@ export default function Home() {
 
       {/* ===== manifest ===== */}
       <section className="band brand-field on-brand" data-hideable="home:manifest">
-        <FoamArt seed={7} n={150} light shape="mega" className="band-foam" />
+        <Obj name="cursor" className="band-obj-corner" />
         <div className="wrap" style={{ textAlign: 'center' }}>
           <h2 className="h-lg rv" style={{ margin: '0 auto' }} data-edit="home_mq_h">łączymy sygnały w całość.</h2>
           <p className="lead rv rv-d1" style={{ margin: '20px auto 0' }} data-edit="home_mq_p">poznaj nasz sposób myślenia o mediach — manifest FOAM.</p>

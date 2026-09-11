@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { fetchRows } from '../lib/api.js';
+import Obj from '../components/Obj.jsx';
 
 export default function InsightPost() {
   const { slug } = useParams();
@@ -33,6 +34,7 @@ export default function InsightPost() {
   return (
     <div className="page-insight-post">
       <section className="page-hero brand-field on-brand">
+        <div className="ph-mega ph-right" aria-hidden="true"><Obj name="speech" /></div>
         <div className="wrap article-head">
           <div className="eyebrow rv in">{post.category || 'insight'}</div>
           <h1 className="h-lg rv in">{post.title}</h1>

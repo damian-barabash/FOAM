@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
-import FoamArt from '../components/FoamArt.jsx';
-import Aura, { Tile, auraFor } from '../components/Aura.jsx';
+import Obj from '../components/Obj.jsx';
+import Aura, { Tile } from '../components/Aura.jsx';
 
 const TEAM = [
   ['Maja Kowalik', 'managing director'],
@@ -24,7 +24,7 @@ export default function ONas() {
   return (
     <div className="page-onas">
       <section className="page-hero brand-field on-brand">
-        <div className="ph-mega ph-left" aria-hidden="true"><FoamArt seed={65} n={330} light shape="heart" /></div>
+        <div className="ph-mega ph-left" aria-hidden="true"><Obj name="heart" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="on_hero_eyebrow">o nas / zespół</div>
           <h1 className="h-xl rv in" data-edit="on_hero_h">ludzie od łączenia.</h1>
@@ -68,7 +68,6 @@ export default function ONas() {
               <div className={'card team-card has-aura rv rv-d' + (i % 3)} key={name}>
                 <Aura v={['a1', 'a5', 'a8', 'a7', 'a4', 'a1'][i]} className="aura-soft" />
                 <div className="team-ava">
-                  <FoamArt seed={i + 51} n={100} light />
                   <span>{name.split(' ').map((w) => w[0]).join('')}</span>
                 </div>
                 <h3 data-edit={`on_t${i + 1}_name`}>{name}</h3>

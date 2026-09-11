@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { fetchRows } from '../lib/api.js';
-import FoamArt from '../components/FoamArt.jsx';
+import Obj from '../components/Obj.jsx';
 import CaseRow from '../components/CaseRow.jsx';
 
 export default function CaseStudies() {
@@ -18,7 +18,7 @@ export default function CaseStudies() {
   return (
     <div className="page-cases">
       <section className="page-hero brand-field on-brand">
-        <div className="ph-mega ph-left" aria-hidden="true"><FoamArt seed={63} n={330} light shape="target" /></div>
+        <div className="ph-mega ph-left" aria-hidden="true"><Obj name="target" /></div>
         <div className="wrap">
           <div className="eyebrow rv in">case studies / realizacje</div>
           <h1 className="h-xl rv in">kampanie, które wybrzmiały.</h1>

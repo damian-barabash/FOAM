@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { LineChart, BarsH, StatTile } from '../components/Charts.jsx';
-import FoamArt from '../components/FoamArt.jsx';
+import Obj from '../components/Obj.jsx';
 import Aura from '../components/Aura.jsx';
 
 // Pełny raport online (link z maila po zostawieniu adresu). noindex.
@@ -33,7 +33,7 @@ export default function RaportPelny() {
   return (
     <div className="page-raport-pelny">
       <section className="page-hero brand-field on-brand">
-        <div className="ph-mega ph-right" aria-hidden="true"><FoamArt seed={68} n={330} light shape="bars" /></div>
+        <div className="ph-mega ph-right" aria-hidden="true"><Obj name="growth" /></div>
         <div className="wrap">
           <div className="eyebrow rv in">raport foam.media · edycja 2026 · wersja online</div>
           <h1 className="h-xl rv in">suma małych sygnałów.</h1>
@@ -113,7 +113,7 @@ export default function RaportPelny() {
 
       <section className="band brand-field on-brand">
         <div className="wrap" style={{ textAlign: 'center' }}>
-          <FoamArt seed={9} n={280} light shape="arrow" style={{ width: 150, margin: '0 auto 18px' }} />
+          <Obj name="rocket" className="band-obj" style={{ width: 160, marginBottom: 18 }} />
           <h2 className="h-lg rv" style={{ margin: '0 auto' }}>porozmawiajmy o twoich sygnałach.</h2>
           <div className="hero-ctas rv rv-d1" style={{ justifyContent: 'center' }}>
             <a className="btn btn-white" href="/kontakt">napisz do nas</a>

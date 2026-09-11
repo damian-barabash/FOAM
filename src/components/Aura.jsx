@@ -1,7 +1,7 @@
 import React from 'react';
 
 // „Aura" = zernista, rozmyta plama brandowego błękitu (public/assets/aura/a1..a8.webp,
-// generowane skryptem sharp). tone: light = ciemny tekst na jasnym dole,
+// generowane scripts/gen-aura.mjs). tone: light = ciemny tekst na jasnym dole,
 // dark = biały tekst, split = aura tylko w górnej części, dół biały.
 export const AURA = { a1: 'light', a2: 'split', a3: 'dark', a4: 'light', a5: 'light', a6: 'dark', a7: 'light', a8: 'light' };
 const ORDER = ['a1', 'a2', 'a3', 'a5', 'a4', 'a7', 'a6', 'a8'];
@@ -15,11 +15,11 @@ export default function Aura({ v = 'a1', className = '' }) {
   );
 }
 
-// Kafel-poster: indeks, aura, tytuł w szklanej pigułce, opis.
-export function Tile({ i, v, idx, title, text, k, className = '' }) {
+// Kafel-poster: indeks w chipie, aura, tytuł w szklanej pigułce, opis.
+export function Tile({ i, v, idx, title, text, k }) {
   const a = v || auraFor(i);
   return (
-    <div className={`tile tile-${AURA[a]} rv rv-d${i % 4} ${className}`}>
+    <div className={`tile tile-${AURA[a]} rv rv-d${i % 4}`}>
       <Aura v={a} />
       {idx ? <span className="t-idx" data-edit={k ? `${k}_n` : undefined}>{idx}</span> : null}
       <div className="tile-body">

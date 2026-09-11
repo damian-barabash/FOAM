@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
-import FoamArt from '../components/FoamArt.jsx';
+import Obj from '../components/Obj.jsx';
 import Aura, { Tile } from '../components/Aura.jsx';
 
 const FILARY = [
@@ -28,7 +28,7 @@ export default function Podejscie() {
   return (
     <div className="page-podejscie">
       <section className="page-hero brand-field on-brand">
-        <div className="ph-mega ph-right" aria-hidden="true"><FoamArt seed={61} n={330} light /></div>
+        <div className="ph-mega ph-right" aria-hidden="true"><Obj name="bulb" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="pod_hero_eyebrow">podejście / manifest</div>
           <h1 className="h-xl rv in" data-edit="pod_hero_h">pojedyncza bańka nie znaczy nic.</h1>

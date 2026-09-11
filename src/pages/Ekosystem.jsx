@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
-import FoamArt from '../components/FoamArt.jsx';
+import Obj from '../components/Obj.jsx';
 import Aura from '../components/Aura.jsx';
 
 export default function Ekosystem() {
@@ -15,7 +15,7 @@ export default function Ekosystem() {
   return (
     <div className="page-eko">
       <section className="page-hero brand-field on-brand">
-        <div className="ph-mega ph-right" aria-hidden="true"><FoamArt seed={64} n={330} light shape="venn" /></div>
+        <div className="ph-mega ph-right" aria-hidden="true"><Obj name="gear" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="eko_hero_eyebrow">ekosystem</div>
           <h1 className="h-xl rv in" data-edit="eko_hero_h">bańki łączą się w pianę.</h1>
@@ -25,8 +25,7 @@ export default function Ekosystem() {
 
       <section className="section">
         <div className="wrap">
-          <div className="eco-venn rv in" aria-hidden="true">
-            <FoamArt seed={17} n={340} shape="venn" style={{ width: 'min(420px, 78vw)' }} /></div>
+          <div className="eco-venn rv in" aria-hidden="true"><Obj name="pie" /></div>
           <div className="grid3">
             <div className="card eco-card has-aura rv">
               <Aura v="a1" />

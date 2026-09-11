@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useCms } from '../lib/content.js';
 import { fetchRows } from '../lib/api.js';
-import FoamArt from '../components/FoamArt.jsx';
+import Obj from '../components/Obj.jsx';
 
 export default function Kariera() {
   const ctx = useCms('kariera');
@@ -18,7 +18,7 @@ export default function Kariera() {
   return (
     <div className="page-kariera">
       <section className="page-hero brand-field on-brand">
-        <div className="ph-mega ph-right" aria-hidden="true"><FoamArt seed={66} n={330} light shape="arrow" /></div>
+        <div className="ph-mega ph-right" aria-hidden="true"><Obj name="rocket" /></div>
         <div className="wrap">
           <div className="eyebrow rv in" data-edit="kar_hero_eyebrow">kariera</div>
           <h1 className="h-xl rv in" data-edit="kar_hero_h">dodaj swoją bańkę.</h1>
