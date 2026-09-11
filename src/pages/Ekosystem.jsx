@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
 import FoamArt from '../components/FoamArt.jsx';
+import Aura from '../components/Aura.jsx';
 
 export default function Ekosystem() {
   const navigate = useNavigate();
@@ -23,22 +24,24 @@ export default function Ekosystem() {
       </section>
 
       <section className="section">
-        <span className="mark-word" aria-hidden="true">ekosystem</span>
         <div className="wrap">
           <div className="eco-venn rv in" aria-hidden="true">
             <FoamArt seed={17} n={340} shape="venn" style={{ width: 'min(420px, 78vw)' }} /></div>
           <div className="grid3">
-            <div className="card eco-card rv">
+            <div className="card eco-card has-aura rv">
+              <Aura v="a1" />
               <div className="eco-logo" data-edit="eko_c1_logo">foam.media</div>
               <span className="pill" style={{ width: 'fit-content' }} data-edit="eko_c1_tag">dom mediowy</span>
               <p className="lead" style={{ fontSize: 15 }} data-edit="eko_c1_p">serce ekosystemu: strategia, media, kreacja i dane. tu małe sygnały składają się w kampanie.</p>
             </div>
-            <div className="card eco-card rv rv-d1">
+            <div className="card eco-card has-aura rv rv-d1">
+              <Aura v="a5" />
               <div className="eco-logo" data-edit="eko_c2_logo">donald.pl</div>
               <span className="pill" style={{ width: 'fit-content' }} data-edit="eko_c2_tag">zasięgi & kultura feedu</span>
               <p className="lead" style={{ fontSize: 15 }} data-edit="eko_c2_p">jedno z największych społecznościowych mediów młodego internetu w polsce. stąd znamy puls feedu z pierwszej ręki — i wiemy, co naprawdę niesie.</p>
             </div>
-            <div className="card eco-card rv rv-d2">
+            <div className="card eco-card has-aura rv rv-d2">
+              <Aura v="a8" />
               <div className="eco-logo" data-edit="eko_c3_logo">serca</div>
               <span className="pill" style={{ width: 'fit-content' }} data-edit="eko_c3_tag">creator management</span>
               <p className="lead" style={{ fontSize: 15 }} data-edit="eko_c3_p">zaplecze twórców i talentów. dzięki serca sygnały mają twarze, głosy i społeczności, które im ufają.</p>
@@ -48,19 +51,19 @@ export default function Ekosystem() {
       </section>
 
       <section className="section section-tint" data-hideable="eko:jak">
-        <FoamArt seed={15} n={150} shape="venn" className="foam-deco fd-tr" />
-        <div className="wrap grid2">
-          <div>
-            <div className="eyebrow rv" data-edit="eko_how_eyebrow">co to daje markom</div>
-            <h2 className="h-lg rv" data-edit="eko_how_h">jeden brief, cały ekosystem.</h2>
+        <div className="wrap poster-grid">
+          <div className="poster rv">
+            <Aura v="a4" />
+            <div className="eyebrow" data-edit="eko_how_eyebrow">co to daje markom</div>
+            <h2 className="h-lg rv in" data-edit="eko_how_h">jeden brief, cały ekosystem.</h2>
           </div>
-          <div className="lead rv rv-d1" data-edit="eko_how_p" data-edit-type="html">
+          <div className="poster-text lead rv rv-d1" data-edit="eko_how_p" data-edit-type="html">
             wchodzisz jednym briefem, a pracuje dla ciebie całość: zasięgi własne, sieć twórców, relacje z mediami i zespół, który wie, jak to połączyć.
             mniej pośredników, krótsza droga sygnału, lepsza cena uwagi.
           </div>
         </div>
         <div className="wrap" style={{ marginTop: 'clamp(44px, 5vw, 80px)' }}>
-          <div className="photo rv"><img src="/assets/photos/life-2.webp" alt="ekosystem foam przy pracy" loading="lazy" data-edit="eko_ph1" data-edit-type="image" style={{ aspectRatio: '21/9' }} /></div>
+          <div className="photo photo-wide rv"><img src="/assets/photos/life-2.webp" alt="ekosystem foam przy pracy" loading="lazy" data-edit="eko_ph1" data-edit-type="image" /></div>
         </div>
       </section>
 

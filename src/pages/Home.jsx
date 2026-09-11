@@ -2,22 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
-import OutlineDiagram from '../components/OutlineDiagram.jsx';
 import { fetchRows } from '../lib/api.js';
 import FoamArt from '../components/FoamArt.jsx';
-import CaseBubble from '../components/CaseBubble.jsx';
+import CaseRow from '../components/CaseRow.jsx';
+import { Tile } from '../components/Aura.jsx';
+
+const FILARY = [
+  ['połączenia', 'znamy ludzi, redakcje i platformy. przekaz płynie tam, gdzie ma płynąć — bo wiemy, kogo połączyć.'],
+  ['lekkość', 'komunikacja, która nie ciąży. wchodzimy w kulturę feedu naturalnie, bez podnoszenia głosu.'],
+  ['precyzja', 'każdy sygnał ma adres. dane mówią nam gdzie, kreacja — jak. nic nie leci w próżnię.'],
+  ['impakt', 'suma sygnałów musi wybrzmieć. rozliczamy się z rezonansu, nie z hałasu.'],
+];
 
 export default function Home() {
   const navigate = useNavigate();
   const ctx = useCms('home');
   const editing = ctx && ctx.editing;
-  const [posts, setPosts] = useState([]);
   const [cases, setCases] = useState([]);
 
   useEffect(() => {
     if (editing) return;
     document.title = 'foam.media — siła przekazu to suma małych sygnałów';
-    fetchRows('insights', 'select=slug,title,excerpt,cover,category&published=eq.true&order=created_at.desc&limit=3').then(setPosts);
     fetchRows('case_studies', 'select=slug,title,client,summary,cover,results&published=eq.true&order=ord.asc&limit=2').then(setCases);
   }, [editing]);
 
@@ -49,67 +54,21 @@ export default function Home() {
 
       {/* ===== filary ===== */}
       <section className="section" data-hideable="home:filary">
-        <span className="mark-word" aria-hidden="true">piana</span>
-        <span className="side-label" aria-hidden="true">built on media connections</span>
-        <FoamArt seed={5} n={150} shape="bolt" className="foam-deco fd-tr" />
         <div className="wrap">
           <div className="sec-head">
-            <div>
-              <div className="eyebrow rv" data-edit="home_fil_eyebrow">01 — na czym stoimy</div>
-              <h2 className="h-lg rv" data-edit="home_fil_h">cztery filary. jedna piana.</h2>
-            </div>
+            <div className="eyebrow rv" data-edit="home_fil_eyebrow">na czym stoimy</div>
+            <h2 className="h-lg rv" data-edit="home_fil_h">cztery filary. jedna piana.</h2>
             <p className="lead rv rv-d1" data-edit="home_fil_p">pojedyncza bańka jest ulotna. miliony baniek to materiał, z którego budujemy megafon.</p>
           </div>
-          <div className="mosaic m-4">
-            {[
-              ['połączenia', 'znamy ludzi, redakcje i platformy. przekaz płynie tam, gdzie ma płynąć — bo wiemy, kogo połączyć.', 1],
-              ['lekkość', 'komunikacja, która nie ciąży. wchodzimy w kulturę feedu naturalnie, bez podnoszenia głosu.', 2],
-              ['precyzja', 'każdy sygnał ma adres. dane mówią nam gdzie, kreacja — jak. nic nie leci w próżnię.', 3],
-              ['impakt', 'suma sygnałów musi wybrzmieć. rozliczamy się z rezonansu, nie z hałasu.', 4],
-            ].map(([h, p], i) => (
-              <div className={'mo-card rv rv-d' + (i % 4) + (i === 1 ? ' mo-brand' : '')} key={h}>
-                <span className="mo-num" data-edit={`home_fil${i + 1}_n`}>{'0' + (i + 1)}</span>
-                <OutlineDiagram kind={['nodes','wave','target','pulse'][i]} className="mo-diagram" />
-                {i === 1 ? <FoamArt seed={41} n={110} light className="mo-foam" /> : null}
-                <h3 data-edit={`home_fil${i + 1}_h`}>{h}</h3>
-                <p data-edit={`home_fil${i + 1}_p`}>{p}</p>
-              </div>
+          <div className="tiles t-4">
+            {FILARY.map(([h, p], i) => (
+              <Tile key={h} i={i} idx={'0' + (i + 1)} title={h} text={p} k={`home_fil${i + 1}`} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===== co robimy — zapowiedź ===== */}
-      <section className="section section-tint" data-hideable="home:uslugi">
-        <span className="mark-word mark-left mark-bottom" aria-hidden="true">sygnały</span>
-        <FoamArt seed={6} n={150} shape="play" className="foam-deco fd-br" />
-        <div className="wrap">
-          <div className="sec-head">
-            <div>
-              <div className="eyebrow rv" data-edit="home_usl_eyebrow">02 — co robimy</div>
-              <h2 className="h-lg rv" data-edit="home_usl_h">od pierwszego sygnału po pełny rezonans.</h2>
-            </div>
-            <a className="btn btn-ghost rv" href="/oferta" onClick={go('/oferta')} data-edit="home_usl_cta">zobacz pełną ofertę</a>
-          </div>
-          <div className="mosaic m-3">
-            {[
-              ['media & połączenia', 'planowanie i zakup mediów zbudowane na relacjach: digital, social, influencerzy, PR i formaty, których nie ma w cennikach.'],
-              ['kampanie social-first', 'koncepty, które rodzą się w feedzie: kreacja, produkcja i dystrybucja pod TikTok, Reels, YouTube i newslettery.'],
-              ['dane & rezonans', 'pomiar sygnałów w czasie rzeczywistym: brand lift, attention, sentyment. wiemy, co wybrzmiało — i dlaczego.'],
-            ].map(([h, p], i) => (
-              <div className={'mo-card rv rv-d' + i + (i === 0 ? ' mo-brand' : '')} key={h}>
-                <span className="mo-num" data-edit={`home_usl${i + 1}_n`}>{'0' + (i + 1)}</span>
-                <OutlineDiagram kind={['nodes','signal','chart'][i]} className="mo-diagram" />
-                {i === 0 ? <FoamArt seed={42} n={110} light className="mo-foam" /> : null}
-                <h3 data-edit={`home_usl${i + 1}_h`}>{h}</h3>
-                <p data-edit={`home_usl${i + 1}_p`}>{p}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== zdjęcia vibe ===== */}
+      {/* ===== zdjęcia ===== */}
       <section className="section" style={{ paddingTop: 0 }} data-hideable="home:zdjecia">
         <div className="wrap photo-strip">
           <div className="photo rv"><img src="/assets/photos/life-9.webp" alt="sygnały na żywo — koncert" loading="lazy" data-edit="home_ph1" data-edit-type="image" /></div>
@@ -118,9 +77,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== raport band ===== */}
+      {/* ===== raport ===== */}
       <section className="band brand-field on-brand" data-hideable="home:raport">
-        <span className="mark-word" aria-hidden="true">raport</span>
         <div className="wrap grid2">
           <div>
             <div className="eyebrow rv" data-edit="home_rap_eyebrow">raport 2026</div>
@@ -134,73 +92,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== insighty ===== */}
-      {!editing && posts.length > 0 && (
+      {/* ===== case studies ===== */}
+      {!editing && cases.length > 0 && (
         <section className="section">
           <div className="wrap">
             <div className="sec-head">
-              <div>
-                <div className="eyebrow rv">03 — insighty</div>
-                <h2 className="h-lg rv">punkty widzenia.</h2>
-              </div>
-              <a className="btn btn-ghost rv" href="/insighty" onClick={go('/insighty')}>wszystkie insighty</a>
+              <div className="eyebrow rv">realizacje</div>
+              <h2 className="h-lg rv">kampanie, które wybrzmiały.</h2>
             </div>
-            <div className="post-grid">
-              {posts.map((p, i) => (
-                <a key={p.slug} className={'card post-card rv rv-d' + i} href={`/insighty/${p.slug}`} onClick={go(`/insighty/${p.slug}`)}>
-                  <div className="post-cover">{p.cover ? <img src={p.cover} alt="" loading="lazy" /> : null}</div>
-                  <div className="post-body">
-                    {p.category ? <div className="post-tags"><span className="pill">{p.category}</span></div> : null}
-                    <h3>{p.title}</h3>
-                    <p>{p.excerpt}</p>
-                  </div>
-                </a>
+            <div className="case-list">
+              {cases.map((c, i) => (
+                <CaseRow key={c.slug} c={c} i={i} href="/case-studies" onClick={go('/case-studies')} />
               ))}
             </div>
-          </div>
-        </section>
-      )}
-
-      {/* ===== case studies ===== */}
-      {!editing && cases.length > 0 && (
-        <section className="section section-tint">
-          <div className="wrap">
-            <div className="sec-head">
-              <div>
-                <div className="eyebrow rv">04 — realizacje</div>
-                <h2 className="h-lg rv">kampanie, które wybrzmiały.</h2>
-              </div>
+            <div className="case-more">
               <a className="btn btn-ghost rv" href="/case-studies" onClick={go('/case-studies')}>wszystkie case studies</a>
             </div>
-            <div className="post-grid pg-2">
-              {cases.map((c, i) => (
-                <CaseBubble key={c.slug} i={i} title={c.title} client={c.client}>
-                <a className={'card post-card'} href="/case-studies" onClick={go('/case-studies')}>
-                  <div className="post-cover">{c.cover ? <img src={c.cover} alt="" loading="lazy" /> : null}</div>
-                  <div className="post-body">
-                    <div className="post-tags"><span className="pill">{c.client}</span></div>
-                    <h3>{c.title}</h3>
-                    <p>{c.summary}</p>
-                    {Array.isArray(c.results) && c.results.length > 0 && (
-                      <div className="case-results">
-                        {c.results.slice(0, 3).map((r) => (
-                          <span key={r.label}><b>{r.num}</b><i>{r.label}</i></span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </a>
-                </CaseBubble>
-              ))}
-            </div>
           </div>
         </section>
       )}
 
-      {/* ===== manifest quote ===== */}
+      {/* ===== manifest ===== */}
       <section className="band brand-field on-brand" data-hideable="home:manifest">
-        <span className="mark-word" aria-hidden="true">megafon</span>
-        <FoamArt seed={7} n={150} light shape="mega" className="foam-deco fd-bl" />
+        <FoamArt seed={7} n={150} light shape="mega" className="band-foam" />
         <div className="wrap" style={{ textAlign: 'center' }}>
           <h2 className="h-lg rv" style={{ margin: '0 auto' }} data-edit="home_mq_h">łączymy sygnały w całość.</h2>
           <p className="lead rv rv-d1" style={{ margin: '20px auto 0' }} data-edit="home_mq_p">poznaj nasz sposób myślenia o mediach — manifest FOAM.</p>

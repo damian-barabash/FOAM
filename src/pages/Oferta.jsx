@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
-import OutlineDiagram from '../components/OutlineDiagram.jsx';
-import FoamArt from '../components/FoamArt.jsx';
+import { Tile } from '../components/Aura.jsx';
 
 const SERVICES = [
   ['media & połączenia', 'planowanie i zakup mediów na relacjach, nie na cennikach: digital, DOOH, audio, prasa i formaty szyte na miarę. wiemy, do kogo zadzwonić.'],
@@ -33,25 +32,16 @@ export default function Oferta() {
       </section>
 
       <section className="section">
-        <span className="mark-word" aria-hidden="true">oferta</span>
-        <FoamArt seed={10} n={150} shape="mega" className="foam-deco fd-bl" />
         <div className="wrap">
-          <div className="mosaic m-6">
+          <div className="tiles t-3">
             {SERVICES.map(([h, p], i) => (
-              <div className={'mo-card rv rv-d' + (i % 3) + ((i === 0 || i === 4) ? ' mo-brand' : '')} key={h}>
-                <span className="mo-num" data-edit={`of_s${i + 1}_n`}>{'0' + (i + 1)}</span>
-                <OutlineDiagram kind={['nodes','signal','orbit','wave','chart','target'][i]} className="mo-diagram" />
-                {(i === 0 || i === 4) ? <FoamArt seed={45} n={110} light className="mo-foam" /> : null}
-                <h3 data-edit={`of_s${i + 1}_h`}>{h}</h3>
-                <p data-edit={`of_s${i + 1}_p`}>{p}</p>
-              </div>
+              <Tile key={h} i={i} idx={'0' + (i + 1)} title={h} text={p} k={`of_s${i + 1}`} />
             ))}
           </div>
         </div>
       </section>
 
       <section className="section section-tint" data-hideable="of:model">
-        <span className="mark-word mark-left mark-bottom" aria-hidden="true">model</span>
         <div className="wrap grid2">
           <div>
             <div className="eyebrow rv" data-edit="of_mod_eyebrow">model współpracy</div>

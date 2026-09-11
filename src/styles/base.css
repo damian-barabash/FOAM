@@ -29,10 +29,9 @@
   --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   --r-pill: 999px;
-  --r-lg: 16px;
-  --r-md: 10px;
-  --shadow-sm: 0 2px 12px rgba(65, 104, 238, .07);
-  --shadow-md: 0 10px 34px rgba(65, 104, 238, .13);
+  --r-lg: 20px;
+  --r-md: 12px;
+  --r-tile: 28px;
 
   --gutter: clamp(20px, 4.5vw, 64px);
   --maxw: 1240px;
@@ -74,7 +73,7 @@ h1, h2, h3, .display {
 /* ---------- layout ---------- */
 /* .wrap ponad canvasem baniek (z2) — bańki tylko na tle, nie na treści */
 .wrap { max-width: var(--maxw); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); position: relative; z-index: 4; }
-.section { padding: clamp(104px, 13vw, 200px) 0; position: relative; }
+.section { padding: clamp(96px, 12vw, 180px) 0; position: relative; }
 .section-tint { background: var(--surface-tint); }
 
 .eyebrow {
@@ -92,9 +91,9 @@ h1, h2, h3, .display {
 .on-brand .eyebrow::before { background: var(--w-70); }
 
 .h-xl { font-size: clamp(30px, 4.4vw, 62px); }
-.h-lg { font-size: clamp(24px, 3.2vw, 44px); }
+.h-lg { font-size: clamp(26px, 3.3vw, 46px); }
 .h-md { font-size: clamp(20px, 2.6vw, 30px); }
-.lead { font-size: clamp(16px, 1.6vw, 20px); line-height: 1.62; color: var(--ink-2); max-width: 52ch; }
+.lead { font-size: clamp(16px, 1.6vw, 20px); line-height: 1.6; color: var(--ink-2); max-width: 52ch; }
 .on-brand .lead { color: var(--w-90); }
 
 /* ---------- pole brandowe (gradient) ---------- */
@@ -143,13 +142,11 @@ h1, h2, h3, .display {
 }
 .on-brand .pill { border-color: var(--w-40); color: var(--w-90); background: transparent; }
 
-/* ---------- karty (bąbelkowe) ---------- */
-.card {
-  background: radial-gradient(130% 100% at 16% 10%, #ffffff 0%, #f7faff 58%, #ecf3fe 100%);
-  border: 1px solid var(--border-subtle);
-  border-radius: 22px;
-  box-shadow: var(--shadow-sm);
-}
+/* ---------- karty: miękkie płyty bez obwódek (na białym = tint, na tint = białe) ---------- */
+.card { background: var(--surface-tint); border: 0; border-radius: var(--r-tile); }
+.section-tint .card { background: #fff; }
+.card .field { background: #fff; }
+.section-tint .card .field { background: var(--surface-tint); }
 
 /* ---------- formularze ---------- */
 .field {
@@ -168,17 +165,11 @@ h1, h2, h3, .display {
 .field:focus { border-color: var(--foam-500); box-shadow: 0 0 0 3px rgba(65, 104, 238, .12); }
 .field::placeholder { color: var(--ink-3); }
 textarea.field { border-radius: var(--r-lg); min-height: 130px; resize: vertical; line-height: 1.5; }
+.field { border-color: transparent; }
+.field:hover { border-color: var(--foam-200); }
 .on-brand .field { background: var(--w-15); border-color: var(--w-40); color: #fff; }
 .on-brand .field::placeholder { color: var(--w-70); }
 .on-brand .field:focus { border-color: #fff; box-shadow: 0 0 0 3px var(--w-15); }
-
-/* formularze w białych kartach na polu brandowym — pola wracają do wersji on-light
-   (bez tego .on-brand daje białe inputy na białej karcie = "puste" pola) */
-.on-brand .card .field { background: #fff; border-color: var(--border-subtle); color: var(--ink); }
-.on-brand .card .field::placeholder { color: var(--ink-3); }
-.on-brand .card .field:focus { border-color: var(--foam-500); box-shadow: 0 0 0 3px rgba(65, 104, 238, .12); }
-.on-brand .card .check { color: var(--ink-2); }
-.on-brand .card .check input { accent-color: var(--foam-600); }
 
 .check { display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; line-height: 1.45; color: var(--ink-2); cursor: pointer; }
 .check input { margin-top: 2px; accent-color: var(--foam-600); width: 15px; height: 15px; flex: none; }
@@ -188,12 +179,11 @@ textarea.field { border-radius: var(--r-lg); min-height: 130px; resize: vertical
 /* ---------- reveal on scroll ---------- */
 .rv {
   opacity: 0;
-  transform: translateY(34px) scale(.975);
-  filter: blur(10px);
-  transition: opacity .9s cubic-bezier(.16, 1, .3, 1), transform .9s cubic-bezier(.16, 1, .3, 1), filter .9s cubic-bezier(.16, 1, .3, 1);
-  will-change: opacity, transform, filter;
+  transform: translateY(26px);
+  transition: opacity .9s cubic-bezier(.16, 1, .3, 1), transform .9s cubic-bezier(.16, 1, .3, 1);
+  will-change: opacity, transform;
 }
-.rv.in { opacity: 1; transform: none; filter: none; }
+.rv.in { opacity: 1; transform: none; }
 /* chwilowe "uzbrajanie" elementów przez reveal — bez animacji chowania */
 .rv-snap, .rv-snap .split-w > i { transition: none !important; }
 .rv-d1 { transition-delay: .1s; }
@@ -213,13 +203,15 @@ h1.rv, h2.rv { filter: none; transform: none; }
 .rv.in .split-w > i { transform: none; }
 
 /* zdjęcia: odsłona „kurtyną" */
-.photo.rv { clip-path: inset(0 100% 0 0 round 22px); transition: opacity .9s cubic-bezier(.16, 1, .3, 1), transform .9s cubic-bezier(.16, 1, .3, 1), filter .9s cubic-bezier(.16, 1, .3, 1), clip-path 1.1s cubic-bezier(.16, 1, .3, 1); }
-.photo.rv.in { clip-path: inset(0 0 0 0 round 22px); }
+/* kurtyna na <img>, nie na .photo: Chrome liczy clip-path celu w IntersectionObserver —
+   element przycięty do zera nigdy „nie wchodzi w kadr" i zdjęcia zostawały niewidoczne */
+.photo.rv img { clip-path: inset(0 100% 0 0); transition: transform .8s cubic-bezier(.16, 1, .3, 1), clip-path 1.1s cubic-bezier(.16, 1, .3, 1); }
+.photo.rv.in img { clip-path: inset(0 0 0 0); }
 
 @media (prefers-reduced-motion: reduce) {
   .rv { opacity: 1; transform: none; filter: none; transition: none; }
   .split-w > i { transform: none; transition: none; }
-  .photo.rv { clip-path: none; }
+  .photo.rv img { clip-path: none; }
   html { scroll-behavior: auto; }
 }
 

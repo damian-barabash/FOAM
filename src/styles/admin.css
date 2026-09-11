@@ -28,7 +28,7 @@
 .adm-btn.danger { color: #c22a4a; border-color: #f2c6d0; }
 .adm-btn.danger:hover { background: #c22a4a; border-color: #c22a4a; color: #fff; }
 .adm-select { border: 1px solid var(--border-subtle); background: #fff; border-radius: var(--r-pill); padding: 9px 16px; font: inherit; font-size: 13.5px; color: var(--ink); outline: none; }
-.adm-toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 11px 22px; border-radius: var(--r-pill); font-size: 13.5px; z-index: 90; box-shadow: var(--shadow-md); }
+.adm-toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 11px 22px; border-radius: var(--r-pill); font-size: 13.5px; z-index: 90; box-shadow: 0 10px 34px rgba(13, 27, 51, .18); }
 .adm-dim { color: var(--ink-3); }
 .adm-card { background: #fff; border: 1px solid var(--border-subtle); border-radius: var(--r-lg); padding: 20px; margin-bottom: 16px; }
 

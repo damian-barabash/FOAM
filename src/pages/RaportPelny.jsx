@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { LineChart, BarsH, StatTile } from '../components/Charts.jsx';
 import FoamArt from '../components/FoamArt.jsx';
+import Aura from '../components/Aura.jsx';
 
 // Pełny raport online (link z maila po zostawieniu adresu). noindex.
 const INDEX_2025 = [42, 48, 47, 55, 61, 58, 67, 74, 79, 88, 96, 108];
@@ -43,10 +44,10 @@ export default function RaportPelny() {
       <section className="section">
         <div className="wrap">
           <div className="grid4">
-            <div className="card rv"><StatTile num="+157%" label="wzrost indeksu rezonansu" sub="marki „signal-first” r/r" /></div>
-            <div className="card rv rv-d1"><StatTile num="63%" label="uwagi z małych formatów" sub="ekspozycja < 15 sekund" /></div>
-            <div className="card rv rv-d2"><StatTile num="4,2×" label="zwrot z mediów relacyjnych" sub="vs zakup programmatic" /></div>
-            <div className="card rv rv-d3"><StatTile num="120" label="kampanii w próbie" sub="polski rynek" /></div>
+            <div className="card has-aura rv"><Aura v="a8" className="aura-soft" /><StatTile num="+157%" label="wzrost indeksu rezonansu" sub="marki „signal-first” r/r" /></div>
+            <div className="card has-aura rv rv-d1"><Aura v="a5" className="aura-soft" /><StatTile num="63%" label="uwagi z małych formatów" sub="ekspozycja < 15 sekund" /></div>
+            <div className="card has-aura rv rv-d2"><Aura v="a7" className="aura-soft" /><StatTile num="4,2×" label="zwrot z mediów relacyjnych" sub="vs zakup programmatic" /></div>
+            <div className="card has-aura rv rv-d3"><Aura v="a1" className="aura-soft" /><StatTile num="120" label="kampanii w próbie" sub="polski rynek" /></div>
           </div>
         </div>
       </section>
@@ -54,10 +55,8 @@ export default function RaportPelny() {
       <section className="section section-tint">
         <div className="wrap">
           <div className="sec-head">
-            <div>
-              <div className="eyebrow rv">rozdział 01</div>
-              <h2 className="h-lg rv">indeks rezonansu 2025.</h2>
-            </div>
+            <div className="eyebrow rv">rozdział 01</div>
+            <h2 className="h-lg rv">indeks rezonansu 2025.</h2>
             <p className="lead rv rv-d1">indeks łączy brand lift, attention i sentyment w jedną miarę (100 = mediana rynku w styczniu). marki planujące media jako sumę małych sygnałów rosły przez cały rok.</p>
           </div>
           <div className="card rv" style={{ padding: 28 }}>

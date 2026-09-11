@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
-import OutlineDiagram from '../components/OutlineDiagram.jsx';
 import FoamArt from '../components/FoamArt.jsx';
+import Aura, { Tile, auraFor } from '../components/Aura.jsx';
 
 const TEAM = [
   ['Maja Kowalik', 'managing director'],
@@ -33,12 +33,13 @@ export default function ONas() {
       </section>
 
       <section className="section">
-        <div className="wrap grid2">
-          <div>
-            <div className="eyebrow rv" data-edit="on_kul_eyebrow">kultura</div>
-            <h2 className="h-lg rv" data-edit="on_kul_h">mówimy cicho, słychać daleko.</h2>
+        <div className="wrap poster-grid">
+          <div className="poster tone-dark rv">
+            <Aura v="a6" />
+            <div className="eyebrow" data-edit="on_kul_eyebrow">kultura</div>
+            <h2 className="h-lg rv in" data-edit="on_kul_h">mówimy cicho, słychać daleko.</h2>
           </div>
-          <div className="lead rv rv-d1" data-edit="on_kul_p" data-edit-type="html">
+          <div className="poster-text lead rv rv-d1" data-edit="on_kul_p" data-edit-type="html">
             nie wierzymy w krzyk — ani w kampaniach, ani w biurze. wierzymy w rzemiosło, ciekawość i lekkość.
             pracujemy hybrydowo, jesteśmy z warszawy, a nasze spotkania zaczynają się od danych i kończą na pomysłach, nie odwrotnie.
           </div>
@@ -56,19 +57,16 @@ export default function ONas() {
       </section>
 
       <section className="section section-tint" data-hideable="on:zespol">
-        <span className="mark-word" aria-hidden="true">zespół</span>
-        <span className="side-label" aria-hidden="true">foam.media · warszawa</span>
         <div className="wrap">
           <div className="sec-head">
-            <div>
-              <div className="eyebrow rv" data-edit="on_team_eyebrow">zespół</div>
-              <h2 className="h-lg rv" data-edit="on_team_h">twarze piany.</h2>
-            </div>
+            <div className="eyebrow rv" data-edit="on_team_eyebrow">zespół</div>
+            <h2 className="h-lg rv" data-edit="on_team_h">twarze piany.</h2>
             <p className="lead rv rv-d1" data-edit="on_team_p">zdjęcia? wolimy bańki. poznamy się na spotkaniu.</p>
           </div>
           <div className="grid3">
             {TEAM.map(([name, role], i) => (
-              <div className={'card team-card rv rv-d' + (i % 3)} key={name}>
+              <div className={'card team-card has-aura rv rv-d' + (i % 3)} key={name}>
+                <Aura v={['a1', 'a5', 'a8', 'a7', 'a4', 'a1'][i]} className="aura-soft" />
                 <div className="team-ava">
                   <FoamArt seed={i + 51} n={100} light />
                   <span>{name.split(' ').map((w) => w[0]).join('')}</span>
@@ -82,23 +80,19 @@ export default function ONas() {
       </section>
 
       <section className="section" data-hideable="on:wartosci">
-        <span className="mark-word mark-left mark-bottom" aria-hidden="true">kultura</span>
-        <FoamArt seed={16} n={150} shape="heart" className="foam-deco fd-tr" />
         <div className="wrap">
-          <div className="mosaic m-4">
+          <div className="sec-head">
+            <div className="eyebrow rv" data-edit="on_val_eyebrow">wartości</div>
+            <h2 className="h-lg rv" data-edit="on_val_h">cztery rzeczy, na których nam zależy.</h2>
+          </div>
+          <div className="tiles t-4">
             {[
               ['ciekawość', 'feed zmienia się co tydzień. my razem z nim.'],
               ['rzemiosło', 'małe sygnały wymagają dużej staranności.'],
               ['szczerość', 'mówimy klientom to, co mówią dane. też gdy boli.'],
               ['lekkość', 'dobra robota nie musi być ciężka.'],
             ].map(([h, p], i) => (
-              <div className={'mo-card rv rv-d' + (i % 4) + (i === 3 ? ' mo-brand' : '')} key={h}>
-                <span className="mo-num" data-edit={`on_v${i + 1}_n`}>{'0' + (i + 1)}</span>
-                <OutlineDiagram kind={['orbit','target','pulse','wave'][i]} className="mo-diagram" />
-                {i === 3 ? <FoamArt seed={47} n={110} light className="mo-foam" /> : null}
-                <h3 data-edit={`on_v${i + 1}_h`}>{h}</h3>
-                <p data-edit={`on_v${i + 1}_p`}>{p}</p>
-              </div>
+              <Tile key={h} i={i + 2} idx={'0' + (i + 1)} title={h} text={p} k={`on_v${i + 1}`} />
             ))}
           </div>
         </div>

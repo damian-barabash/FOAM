@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useCms } from '../lib/content.js';
 import { postLead } from '../lib/api.js';
 import FoamArt from '../components/FoamArt.jsx';
+import Aura from '../components/Aura.jsx';
 
 const TOPICS = [
   ['biznes', 'współpraca / kampania'],
@@ -47,8 +48,6 @@ export default function Kontakt() {
       </section>
 
       <section className="section">
-        <span className="mark-word" aria-hidden="true">halo</span>
-        <FoamArt seed={19} n={150} shape="speech" className="foam-deco fd-bl" />
         <div className="wrap grid2" style={{ alignItems: 'flex-start' }}>
           <div className="card raport-form rv">
             {state === 'done' ? (
@@ -90,19 +89,22 @@ export default function Kontakt() {
             )}
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+          <div className="contact-side">
             <div className="photo rv rv-d1"><img src="/assets/photos/life-12.webp" alt="foam — zawsze przy kawie" loading="lazy" data-edit="kon_ph1" data-edit-type="image" /></div>
-            <div className="card rv rv-d1" style={{ padding: '26px 28px' }}>
+            <div className="card contact-card has-aura rv rv-d1">
+              <Aura v="a8" className="aura-soft" />
               <div className="eyebrow" data-edit="kon_d1_h">napisz wprost</div>
-              <a href="mailto:info@foam.media" className="h-md" style={{ fontFamily: 'var(--font-display)', fontWeight: 600, letterSpacing: '-0.04em' }} data-edit="kon_d1_mail">info@foam.media</a>
+              <a href="mailto:info@foam.media" className="big" data-edit="kon_d1_mail">info@foam.media</a>
               <p className="form-note" style={{ marginTop: 10 }} data-edit="kon_d1_p">na maile odpowiadamy szybciej niż na cokolwiek innego.</p>
             </div>
-            <div className="card rv rv-d2" style={{ padding: '26px 28px' }}>
+            <div className="card contact-card has-aura rv rv-d2">
+              <Aura v="a5" className="aura-soft" />
               <div className="eyebrow" data-edit="kon_d2_h">kontakt prasowy</div>
-              <a href="mailto:press@foam.media" style={{ fontWeight: 600, fontSize: 18 }} data-edit="kon_d2_mail">press@foam.media</a>
+              <a href="mailto:press@foam.media" className="mid" data-edit="kon_d2_mail">press@foam.media</a>
               <p className="form-note" style={{ marginTop: 10 }} data-edit="kon_d2_p">materiały prasowe, wypowiedzi eksperckie, dane z raportów.</p>
             </div>
-            <div className="card rv rv-d3" style={{ padding: '26px 28px' }}>
+            <div className="card contact-card has-aura rv rv-d3">
+              <Aura v="a7" className="aura-soft" />
               <div className="eyebrow" data-edit="kon_d3_h">biuro</div>
               <p style={{ fontWeight: 600, fontSize: 16 }} data-edit="kon_d3_a">foam.media sp. z o.o.</p>
               <p className="form-note" style={{ marginTop: 6 }} data-edit="kon_d3_p">warszawa · pracujemy hybrydowo, spotykamy się tam, gdzie ty.</p>

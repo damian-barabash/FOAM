@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { fetchRows } from '../lib/api.js';
 import FoamArt from '../components/FoamArt.jsx';
+import Aura from '../components/Aura.jsx';
 
 export default function Insighty() {
   const navigate = useNavigate();
@@ -33,8 +34,6 @@ export default function Insighty() {
       </section>
 
       <section className="section">
-        <span className="mark-word" aria-hidden="true">insighty</span>
-        <FoamArt seed={13} n={150} shape="bulb" className="foam-deco fd-bl" />
         <div className="wrap">
           {cats.length > 1 && (
             <div className="post-tags rv in" style={{ marginBottom: 30 }}>
@@ -57,7 +56,7 @@ export default function Insighty() {
             <div className="post-grid">
               {shown.map((p, i) => (
                 <a key={p.slug} className={'card post-card rv rv-d' + (i % 3)} href={`/insighty/${p.slug}`} onClick={go(`/insighty/${p.slug}`)}>
-                  <div className="post-cover">{p.cover ? <img src={p.cover} alt="" loading="lazy" /> : null}</div>
+                  <div className="post-cover">{p.cover ? <img src={p.cover} alt="" loading="lazy" /> : <Aura v={['a1', 'a5', 'a8'][i % 3]} />}</div>
                   <div className="post-body">
                     {p.category ? <div className="post-tags"><span className="pill">{p.category}</span></div> : null}
                     <h3>{p.title}</h3>

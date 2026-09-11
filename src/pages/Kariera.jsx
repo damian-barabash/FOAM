@@ -27,14 +27,10 @@ export default function Kariera() {
       </section>
 
       <section className="section">
-        <span className="mark-word" aria-hidden="true">kariera</span>
-        <FoamArt seed={18} n={150} shape="arrow" className="foam-deco fd-tr" />
         <div className="wrap">
           <div className="sec-head">
-            <div>
-              <div className="eyebrow rv" data-edit="kar_list_eyebrow">otwarte role</div>
-              <h2 className="h-lg rv" data-edit="kar_list_h">kogo teraz słuchamy.</h2>
-            </div>
+            <div className="eyebrow rv" data-edit="kar_list_eyebrow">otwarte role</div>
+            <h2 className="h-lg rv" data-edit="kar_list_h">kogo teraz słuchamy.</h2>
           </div>
           {editing ? (
             <div className="mono" style={{ color: 'var(--ink-3)' }}>[ogłoszenia zarządzane w zakładce „Kariera" panelu]</div>
@@ -59,7 +55,7 @@ export default function Kariera() {
                     <span className="pill">{j.type}</span>
                   </div>
                   {open === j.id && (
-                    <div className="card" style={{ padding: '22px 26px', marginTop: -6, borderTop: 0, borderRadius: '0 0 var(--r-lg) var(--r-lg)' }}>
+                    <div className="card job-body">
                       <p style={{ whiteSpace: 'pre-wrap', lineHeight: 1.6, color: 'var(--ink-2)', fontSize: 14.5 }}>{j.body}</p>
                       <a className="btn btn-solid" style={{ marginTop: 16 }} href={`mailto:kariera@foam.media?subject=${encodeURIComponent(j.title)}`}>aplikuj — kariera@foam.media</a>
                     </div>

@@ -2,8 +2,21 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wipeTo } from '../components/wipe.js';
 import { useCms } from '../lib/content.js';
-import OutlineDiagram from '../components/OutlineDiagram.jsx';
 import FoamArt from '../components/FoamArt.jsx';
+import Aura, { Tile } from '../components/Aura.jsx';
+
+const FILARY = [
+  ['połączenia', 'relacje z redakcjami, twórcami i platformami budowane latami. połączenie to najkrótsza droga sygnału.'],
+  ['lekkość', 'nie przekrzykujemy internetu. wchodzimy w jego rytm — lekko, naturalnie, we właściwym kontekście.'],
+  ['precyzja', 'sygnał bez adresu to szum. planujemy media na danych, nie na przyzwyczajeniach.'],
+  ['impakt', 'sukces mierzymy rezonansem: co zostało w głowach, a nie tylko w raportach zasięgowych.'],
+];
+const KROKI = [
+  ['nasłuch', 'zanim cokolwiek powiemy — słuchamy. dane o kategorii, kulturze i konkurencji zbieramy w jeden obraz.'],
+  ['kompozycja', 'projektujemy przekaz i dobieramy sygnały: kanały, twórców, formaty, momenty. powstaje partytura kampanii.'],
+  ['emisja', 'wypuszczamy sygnały w zaplanowanym rytmie i reagujemy na żywo — feed nie czeka na media plan.'],
+  ['rezonans', 'mierzymy, co wybrzmiało. wnioski wracają do partytury — każda kampania uczy następną.'],
+];
 
 export default function Podejscie() {
   const navigate = useNavigate();
@@ -24,14 +37,13 @@ export default function Podejscie() {
       </section>
 
       <section className="section">
-        <span className="mark-word" aria-hidden="true">manifest</span>
-        <FoamArt seed={8} n={150} shape="speech" className="foam-deco fd-tr" />
-        <div className="wrap grid2">
-          <div>
-            <div className="eyebrow rv" data-edit="pod_man_eyebrow">manifest</div>
-            <h2 className="h-lg rv" data-edit="pod_man_h">suma małych sygnałów.</h2>
+        <div className="wrap poster-grid">
+          <div className="poster tone-dark rv">
+            <Aura v="a3" />
+            <div className="eyebrow" data-edit="pod_man_eyebrow">manifest</div>
+            <h2 className="h-lg rv in" data-edit="pod_man_h">suma małych sygnałów.</h2>
           </div>
-          <div className="lead rv rv-d1" data-edit="pod_man_p" data-edit-type="html">
+          <div className="poster-text lead rv rv-d1" data-edit="pod_man_p" data-edit-type="html">
             wielkie kampanie nie zaczynają się od wielkiego huku. zaczynają się od tysięcy małych sygnałów: wzmianki, udostępnienia, komentarza, sekundy uwagi w feedzie.
             osobno są ulotne jak bańki mydlane. połączone — składają się w przekaz, którego nie da się nie usłyszeć.
             naszą pracą jest łączenie. znamy media, ludzi i dane na tyle dobrze, by wiedzieć, które sygnały się przyciągają — i jak zbudować z nich całość, która wybrzmi.
@@ -47,55 +59,27 @@ export default function Podejscie() {
       <section className="section section-tint" data-hideable="pod:filary">
         <div className="wrap">
           <div className="sec-head">
-            <div>
-              <div className="eyebrow rv" data-edit="pod_fil_eyebrow">filary</div>
-              <h2 className="h-lg rv" data-edit="pod_fil_h">na czym stoi piana.</h2>
-            </div>
+            <div className="eyebrow rv" data-edit="pod_fil_eyebrow">filary</div>
+            <h2 className="h-lg rv" data-edit="pod_fil_h">na czym stoi piana.</h2>
           </div>
-          <div className="mosaic m-4">
-            {[
-              ['połączenia', 'relacje z redakcjami, twórcami i platformami budowane latami. połączenie to najkrótsza droga sygnału.'],
-              ['lekkość', 'nie przekrzykujemy internetu. wchodzimy w jego rytm — lekko, naturalnie, we właściwym kontekście.'],
-              ['precyzja', 'sygnał bez adresu to szum. planujemy media na danych, nie na przyzwyczajeniach.'],
-              ['impakt', 'sukces mierzymy rezonansem: co zostało w głowach, a nie tylko w raportach zasięgowych.'],
-            ].map(([h, p], i) => (
-              <div className={'mo-card rv rv-d' + (i % 4) + (i === 2 ? ' mo-brand' : '')} key={h}>
-                <span className="mo-num" data-edit={`pod_fil${i + 1}_n`}>{'0' + (i + 1)}</span>
-                <OutlineDiagram kind={['nodes','wave','target','pulse'][i]} className="mo-diagram" />
-                {i === 2 ? <FoamArt seed={43} n={110} light className="mo-foam" /> : null}
-                <h3 data-edit={`pod_fil${i + 1}_h`}>{h}</h3>
-                <p data-edit={`pod_fil${i + 1}_p`}>{p}</p>
-              </div>
+          <div className="tiles t-4">
+            {FILARY.map(([h, p], i) => (
+              <Tile key={h} i={i} idx={'0' + (i + 1)} title={h} text={p} k={`pod_fil${i + 1}`} />
             ))}
           </div>
         </div>
       </section>
 
       <section className="section" data-hideable="pod:praca">
-        <span className="mark-word mark-left mark-bottom" aria-hidden="true">proces</span>
-        <FoamArt seed={9} n={150} shape="target" className="foam-deco fd-br" />
         <div className="wrap">
           <div className="sec-head">
-            <div>
-              <div className="eyebrow rv" data-edit="pod_way_eyebrow">sposób pracy</div>
-              <h2 className="h-lg rv" data-edit="pod_way_h">jak łączymy sygnały.</h2>
-            </div>
+            <div className="eyebrow rv" data-edit="pod_way_eyebrow">sposób pracy</div>
+            <h2 className="h-lg rv" data-edit="pod_way_h">jak łączymy sygnały.</h2>
             <p className="lead rv rv-d1" data-edit="pod_way_p">cztery kroki. zawsze w tej kolejności, zawsze razem z tobą.</p>
           </div>
-          <div className="mosaic m-4">
-            {[
-              ['nasłuch', 'zanim cokolwiek powiemy — słuchamy. dane o kategorii, kulturze i konkurencji zbieramy w jeden obraz.'],
-              ['kompozycja', 'projektujemy przekaz i dobieramy sygnały: kanały, twórców, formaty, momenty. powstaje partytura kampanii.'],
-              ['emisja', 'wypuszczamy sygnały w zaplanowanym rytmie i reagujemy na żywo — feed nie czeka na media plan.'],
-              ['rezonans', 'mierzymy, co wybrzmiało. wnioski wracają do partytury — każda kampania uczy następną.'],
-            ].map(([h, p], i) => (
-              <div className={'mo-card rv rv-d' + (i % 4) + (i === 0 ? ' mo-brand' : '')} key={h}>
-                <span className="mo-num" data-edit={`pod_way${i + 1}_n`}>{'0' + (i + 1)}</span>
-                <OutlineDiagram kind={['wave','nodes','signal','pulse'][i]} className="mo-diagram" />
-                {i === 0 ? <FoamArt seed={44} n={110} light className="mo-foam" /> : null}
-                <h3 data-edit={`pod_way${i + 1}_h`}>{h}</h3>
-                <p data-edit={`pod_way${i + 1}_p`}>{p}</p>
-              </div>
+          <div className="tiles t-4">
+            {KROKI.map(([h, p], i) => (
+              <Tile key={h} i={i + 4} idx={'0' + (i + 1)} title={h} text={p} k={`pod_way${i + 1}`} />
             ))}
           </div>
         </div>
